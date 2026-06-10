@@ -37,14 +37,14 @@ export const successCases: SuccessCase[] = [
     imagem: '/LC - Logos/Lumen Connection Alternative white logo.png',
     nome: 'Lumen AI',
     descrição:
-      'IA local integrada ao WhatsApp para agendamentos automáticos com privacidade total dos dados',
+      'IA oficial integrada ao WhatsApp para agendamentos automáticos',
     descrição_en:
-      'Local AI integrated with WhatsApp for automatic appointments with full data privacy',
+      'Official AI integration with WhatsApp for automatic appointments',
     descriçãoLonga:
-      'O Lumen AI é uma solução para empresas que desejam oferecer atendimento mais eficiente, natural e inteligente no WhatsApp. O sistema integra uma inteligência artificial local (ou hospedada em servidor próprio) diretamente no WhatsApp, permitindo que o bot compreenda o cliente de forma conversacional e realize agendamentos organicamente. Com privacidade total — todas as conversas processadas dentro da infraestrutura da empresa — o assistente funciona 24/7, é ideal para salões, clínicas, consultórios, academias e qualquer negócio que precise transformar conversas em horários marcados.',
+      'O Lumen AI é a solução para empresas que desejam oferecer um atendimento mais eficiente, natural e inteligente no WhatsApp. O sistema integra uma inteligência artificial oficial diretamente no WhatsApp, permitindo que o bot compreenda o cliente de forma conversacional e realize agendamentos organicamente. O assistente funciona 24/7 e é ideal para salões, clínicas, consultórios, academias ou qualquer negócio que precise transformar conversas em horários marcados.',
     descriçãoLonga_en:
-      'Lumen AI is a solution for businesses that want smarter, more natural support on WhatsApp. The system integrates a local AI (or hosted on the company’s own server) directly into WhatsApp, letting the bot understand customers conversationally and handle appointments organically. With full privacy — every conversation processed inside the company’s infrastructure — the assistant runs 24/7 and is ideal for salons, clinics, gyms and any business that needs to turn conversations into scheduled appointments.',
-    tagLabel: 'Conheça Lumen AI',
-    tagLabel_en: 'Discover Lumen AI',
+      'Lumen AI is the solution for businesses that want a smarter, more natural customer support for WhatsApp. The system integrates an official AI directly into WhatsApp, letting the bot understand customers conversationally and handle appointments organically. The assistant runs 24/7 and is ideal for salons, clinics, gyms and any business that needs to turn conversations into scheduled appointments.',
+    tagLabel: 'Conheça o Lumen AI',
+    tagLabel_en: 'Learn more about Lumen AI',
   },
 ]

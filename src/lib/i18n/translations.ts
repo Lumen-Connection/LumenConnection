@@ -153,7 +153,7 @@ export const translations = {
     'lumenAI.intro.before': 'O',
     'lumenAI.intro.brand': 'Lumen AI',
     'lumenAI.intro.middle':
-      'integra uma inteligência artificial local diretamente ao WhatsApp da sua empresa. O bot entende o que o cliente fala de forma conversacional, como',
+      'integra uma inteligência artificial oficial diretamente ao WhatsApp da sua empresa. O bot entende o que o cliente fala de forma conversacional, como',
     'lumenAI.exampleMessage': '"tem vaga na próxima semana para um corte?"',
     'lumenAI.intro.end':
       ', interpreta o pedido, verifica a disponibilidade e confirma o horário com naturalidade.',
@@ -167,7 +167,7 @@ export const translations = {
     'lumenAI.highlight.availability.body':
       'Respostas precisas a qualquer hora, reduzindo abandono de atendimento.',
     'lumenAI.footer':
-      'Ideal para salões, clínicas, consultórios, academias, oficinas e qualquer negócio que transforme conversas em agendamentos. Toda a infraestrutura roda em servidor próprio com modelos de IA de 4B a 128B parâmetros, integrados via n8n e WAHA.',
+      'Ideal para salões, clínicas, consultórios, academias, oficinas e qualquer negócio que transforme conversas em agendamentos.',
     'lumenAI.cta': 'Quero conhecer o Lumen AI',
     'lumenAI.ctaMessage': 'Olá, gostaria de saber mais sobre o Lumen AI',
     'lumenAI.close': 'Fechar',
@@ -457,7 +457,7 @@ export const translations = {
     'lumenAI.intro.before': '',
     'lumenAI.intro.brand': 'Lumen AI',
     'lumenAI.intro.middle':
-      'is a fully local AI service that connects straight into your company’s WhatsApp. The bot understands customers conversationally — like',
+      'is an official AI service that connects straight into your company’s WhatsApp. The bot understands customers conversationally — like',
     'lumenAI.exampleMessage': '"any opening next week for a haircut?"',
     'lumenAI.intro.end':
       ' — interpreting the request, checking availability and confirming the appointment naturally.',
@@ -471,7 +471,7 @@ export const translations = {
     'lumenAI.highlight.availability.body':
       'Accurate replies at any hour, dropping customer abandonment rates.',
     'lumenAI.footer':
-      'Made for salons, clinics, gyms, workshops, and any business that turns conversations into appointments. Runs on your own server with AI models from 4B to 128B parameters, integrated via n8n and WAHA.',
+      'Made for salons, clinics, gyms, workshops, and any business that turns conversations into appointments.',
     'lumenAI.cta': 'Tell me more about Lumen AI',
     'lumenAI.ctaMessage': 'Hi, I’d like to learn more about Lumen AI',
     'lumenAI.close': 'Close',

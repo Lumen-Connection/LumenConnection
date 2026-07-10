@@ -62,21 +62,21 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Desenvolvimento Web e Criação de Sites Profissionais',
       intro: [
-        'Quer desenvolver o site da sua empresa, lançar uma loja virtual ou tirar um sistema web do papel? A Lumen Connection é um estúdio digital que projeta e desenvolve sites profissionais de ponta a ponta: do design da interface ao código, da hospedagem ao SEO.',
-        'Trabalhamos com as tecnologias mais modernas do mercado — Next.js, React, TypeScript e Tailwind CSS — para entregar sites rápidos, seguros, responsivos e prontos para aparecer no Google. Cada projeto é construído sob medida: nada de templates genéricos.',
+        'Quer desenvolver o site da sua empresa, lançar uma loja virtual ou tirar um sistema web do papel? A Lumen Connection projeta e desenvolve sites profissionais completos: layout, código, hospedagem e SEO ficam com a gente.',
+        'Trabalhamos com Next.js, React, TypeScript e Tailwind CSS para entregar sites rápidos, seguros e prontos para aparecer no Google. Cada projeto é construído sob medida, sem templates genéricos.',
       ],
       sections: [
         {
           heading: 'Por que criar seu site com a Lumen Connection?',
           body: [
-            'Um site profissional é o principal cartão de visita do seu negócio na internet. Nós unimos engenharia de software e estética visual para que o seu site não apenas funcione bem, mas também represente a identidade da sua marca — com performance de carregamento, acessibilidade e otimização para mecanismos de busca (SEO) desde a primeira linha de código.',
-            'Já desenvolvemos plataformas como o Queridas Compras, vitrine online de lojas regionais de João Pessoa, e o MariDicas, plataforma de economia inteligente com ofertas curadas — ambos construídos em Next.js e no ar hoje.',
+            'Boa parte dos seus clientes pesquisa no Google antes de fechar qualquer negócio. Nós unimos engenharia de software e estética visual para que o seu site funcione bem e represente a identidade da sua marca, com velocidade de carregamento, acessibilidade e otimização para mecanismos de busca (SEO) planejadas desde o início do projeto.',
+            'Já desenvolvemos plataformas como o Queridas Compras, vitrine online de lojas regionais de João Pessoa, e o MariDicas, plataforma de economia inteligente com ofertas curadas. Ambos foram construídos em Next.js e estão no ar hoje.',
           ],
         },
         {
           heading: 'Como funciona o desenvolvimento do seu site',
           body: [
-            'Começamos entendendo o objetivo do projeto: institucional, portfólio, e-commerce ou sistema web completo. Em seguida desenhamos o layout, desenvolvemos, testamos em todos os dispositivos e publicamos — com prazos claros e acompanhamento em cada etapa. Depois do lançamento, oferecemos manutenção e evolução contínua.',
+            'Começamos entendendo o objetivo do projeto: institucional, portfólio, e-commerce ou sistema web completo. Em seguida desenhamos o layout, desenvolvemos, testamos em todos os dispositivos e publicamos, com prazos claros e acompanhamento em cada etapa. Depois do lançamento, você pode contar com manutenção e evolução contínua.',
           ],
         },
       ],
@@ -96,7 +96,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
         },
         {
           q: 'O site funciona bem no celular?',
-          a: 'Sim. Todo projeto é responsivo por padrão e testado em celulares, tablets e desktops — a maior parte do tráfego brasileiro hoje vem de dispositivos móveis.',
+          a: 'Sim. Todo projeto é responsivo por padrão e testado em celulares, tablets e desktops. A maior parte do tráfego brasileiro hoje vem do celular.',
         },
         {
           q: 'Vocês fazem manutenção depois da entrega?',
@@ -122,21 +122,21 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Web Development & Professional Website Creation',
       intro: [
-        'Need a website for your business, an online store or a full web system? Lumen Connection is a digital studio that designs and builds professional websites end to end: from interface design to code, from hosting to SEO.',
-        'We work with modern technologies — Next.js, React, TypeScript and Tailwind CSS — to deliver fast, secure, responsive websites that are ready to rank on Google. Every project is custom-built: no generic templates.',
+        'Need a website for your business, an online store or a full web system? Lumen Connection designs and builds complete professional websites: layout, code, hosting and SEO, all handled by one team.',
+        'We work with Next.js, React, TypeScript and Tailwind CSS to deliver fast, secure websites that are ready to rank on Google. Every project is custom-built, without generic templates.',
       ],
       sections: [
         {
           heading: 'Why build your website with Lumen Connection?',
           body: [
-            'A professional website is your business card on the internet. We combine software engineering and visual aesthetics so your site not only works well but also expresses your brand identity — with loading performance, accessibility and search engine optimization baked in from the first line of code.',
-            'We have shipped platforms like Queridas Compras, an online showcase for regional shops in João Pessoa, and MariDicas, a smart-savings platform with curated deals — both built in Next.js and live today.',
+            'Most customers research a business on Google before making contact. We combine software engineering and visual design so your site works well and expresses your brand identity, with loading speed, accessibility and search engine optimization planned from the start of the project.',
+            'We have shipped platforms like Queridas Compras, an online showcase for regional shops in João Pessoa, and MariDicas, a smart-savings platform with curated deals. Both were built in Next.js and are live today.',
           ],
         },
         {
           heading: 'How the development process works',
           body: [
-            'We start by understanding the goal: institutional site, portfolio, e-commerce or a complete web system. Then we design the layout, develop, test across devices and launch — with clear deadlines and follow-up at every step. After launch, we offer maintenance and continuous improvement.',
+            'We start by understanding the goal: institutional site, portfolio, e-commerce or a complete web system. Then we design the layout, develop, test across devices and launch, with clear deadlines and follow-up at every step. After launch, you can count on maintenance and continuous improvement.',
           ],
         },
       ],
@@ -184,15 +184,15 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Desenvolvimento de Software Sob Medida',
       intro: [
-        'Nem todo problema se resolve com um site. Quando o seu negócio precisa de uma ferramenta própria — um aplicativo desktop, um utilitário interno ou um produto completo — a Lumen Connection desenvolve software sob medida com foco em performance e experiência de uso.',
+        'Nem todo problema se resolve com um site. Quando o seu negócio precisa de uma ferramenta própria, seja um aplicativo desktop, um utilitário interno ou um produto completo, a Lumen Connection desenvolve o software sob medida, com foco em performance e experiência de uso.',
         'Somos especializados em desenvolvimento nativo para Windows com Rust, C++17, Qt 6, WinUI e Razor: aplicações leves, rápidas e com a identidade visual do seu projeto.',
       ],
       sections: [
         {
           heading: 'Software que criamos e mantemos',
           body: [
-            'O Lumen Music é um reprodutor de áudio desktop para Windows, feito em C++17 com Qt 6: biblioteca local com playlists, fila estilo Spotify, edição de metadados e seis temas personalizáveis — tudo offline. O Lumen Chat, escrito em Rust, é um cliente de IA nativo que conecta a dezenas de modelos de linguagem com armazenamento seguro de chaves. Os dois estão disponíveis para download gratuito no nosso site.',
-            'Essa mesma engenharia — atenção a memória, velocidade e polimento de interface — é o que aplicamos no software da sua empresa.',
+            'O Lumen Music é um reprodutor de áudio desktop para Windows, feito em C++17 com Qt 6: biblioteca local com playlists, fila estilo Spotify, edição de metadados e seis temas personalizáveis, tudo funcionando offline. O Lumen Chat, escrito em Rust, é um cliente de IA nativo que conecta a dezenas de modelos de linguagem com armazenamento seguro de chaves. Os dois estão disponíveis para download gratuito no nosso site.',
+            'Aplicamos essa mesma engenharia no software da sua empresa: atenção ao consumo de memória, à velocidade e ao polimento da interface.',
           ],
         },
       ],
@@ -200,7 +200,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
       faq: [
         {
           q: 'Que tipo de software vocês desenvolvem?',
-          a: 'Aplicações desktop nativas para Windows, utilitários internos, ferramentas de automação e produtos completos. Se a sua necessidade for web ou mobile, também atendemos — veja nossas páginas de desenvolvimento web e mobile.',
+          a: 'Aplicações desktop nativas para Windows, utilitários internos, ferramentas de automação e produtos completos. Se a sua necessidade for web ou mobile, também atendemos: veja nossas páginas de desenvolvimento web e mobile.',
         },
         {
           q: 'Por que desenvolvimento nativo em vez de web?',
@@ -233,15 +233,15 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Custom Software Development',
       intro: [
-        'Not every problem is solved with a website. When your business needs its own tool — a desktop application, an internal utility or a complete product — Lumen Connection builds custom software focused on performance and user experience.',
+        'Not every problem is solved with a website. When your business needs its own tool, whether a desktop application, an internal utility or a complete product, Lumen Connection builds custom software focused on performance and user experience.',
         'We specialize in native Windows development with Rust, C++17, Qt 6, WinUI and Razor: lightweight, fast applications carrying your project’s visual identity.',
       ],
       sections: [
         {
           heading: 'Software we build and maintain',
           body: [
-            'Lumen Music is a native Windows desktop audio player built in C++17 with Qt 6: local library with playlists, a Spotify-style queue, metadata editing and six customizable themes — all offline. Lumen Chat, written in Rust, is a native AI client that connects to dozens of language models with secure key storage. Both are available as free downloads on our site.',
-            'That same engineering — attention to memory, speed and interface polish — is what we bring to your company’s software.',
+            'Lumen Music is a native Windows desktop audio player built in C++17 with Qt 6: local library with playlists, a Spotify-style queue, metadata editing and six customizable themes, all working offline. Lumen Chat, written in Rust, is a native AI client that connects to dozens of language models with secure key storage. Both are available as free downloads on our site.',
+            'We bring that same engineering to your company’s software: attention to memory use, speed and interface polish.',
           ],
         },
       ],
@@ -249,7 +249,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
       faq: [
         {
           q: 'What kind of software do you build?',
-          a: 'Native Windows desktop applications, internal utilities, automation tools and complete products. If you need web or mobile, we cover those too — see our web and mobile development pages.',
+          a: 'Native Windows desktop applications, internal utilities, automation tools and complete products. If you need web or mobile, we cover those too: see our web and mobile development pages.',
         },
         {
           q: 'Why native instead of web?',
@@ -291,14 +291,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Desenvolvimento de Aplicativos Mobile',
       intro: [
-        'Seu negócio na palma da mão dos seus clientes. A Lumen Connection cria aplicativos para Android e iOS usando Flutter, React Native e Kotlin — frameworks que permitem desenvolvimento rápido sem abrir mão de uma experiência nativa e fluida.',
-        'Do conceito à publicação nas lojas, cuidamos de tudo: design de interface, desenvolvimento, testes e publicação na Google Play e App Store.',
+        'A Lumen Connection cria aplicativos para Android e iOS com Flutter, React Native e Kotlin, frameworks que encurtam o desenvolvimento sem abrir mão de uma experiência fluida, com cara de app nativo.',
+        'Cuidamos de todas as etapas: desenho das telas, desenvolvimento, testes e publicação na Google Play e na App Store.',
       ],
       sections: [
         {
           heading: 'Um app com a cara da sua marca',
           body: [
-            'Por sermos um estúdio que une engenharia e design, o seu aplicativo nasce com identidade visual consistente, animações cuidadosas e uma interface pensada para o usuário — não um template adaptado. E como usamos frameworks multiplataforma, um mesmo código atende Android e iOS, reduzindo custo e prazo.',
+            'Como somos um estúdio que une engenharia e design, o seu aplicativo nasce com identidade visual consistente, animações cuidadosas e telas desenhadas para quem vai usá-las todos os dias. E um mesmo código atende Android e iOS, o que reduz custo e prazo.',
           ],
         },
       ],
@@ -340,14 +340,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Mobile App Development',
       intro: [
-        'Your business in your customers’ hands. Lumen Connection builds Android and iOS apps using Flutter, React Native and Kotlin — frameworks that enable fast development without giving up a fluid, native-feeling experience.',
-        'From concept to store release, we handle everything: interface design, development, testing and publishing on Google Play and the App Store.',
+        'Lumen Connection builds Android and iOS apps with Flutter, React Native and Kotlin, frameworks that shorten development without giving up a fluid, native-feeling experience.',
+        'We handle every stage: screen design, development, testing and publishing on Google Play and the App Store.',
       ],
       sections: [
         {
           heading: 'An app that carries your brand',
           body: [
-            'Because we are a studio that combines engineering and design, your app is born with a consistent visual identity, careful animations and a user-first interface — not an adapted template. And since we use cross-platform frameworks, one codebase serves both Android and iOS, reducing cost and time.',
+            'Because we are a studio that combines engineering and design, your app is born with a consistent visual identity, careful animations and screens designed for the people who will use them every day. One codebase serves both Android and iOS, which cuts cost and time.',
           ],
         },
       ],
@@ -397,7 +397,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Edição de Vídeos Profissional para YouTube, Reels e Marcas',
       intro: [
-        'Vídeo é a linguagem da internet — e a qualidade da edição é o que separa conteúdo que prende a atenção de conteúdo que é pulado. A Lumen Connection edita vídeos profissionalmente com Adobe Premiere Pro, After Effects e Blender.',
+        'Uma boa edição decide se o público assiste até o fim ou pula seu vídeo nos primeiros segundos. A Lumen Connection edita vídeos profissionalmente com Adobe Premiere Pro, After Effects e Blender.',
         'Editamos de tudo: vídeos longos para YouTube com estilo dinâmico, reels e stories otimizados para retenção, comerciais de produto e vídeos institucionais para empresas.',
       ],
       sections: [
@@ -413,7 +413,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
       faq: [
         {
           q: 'Quanto custa a edição de um vídeo?',
-          a: 'Depende da duração e da complexidade (motion graphics, legendas, efeitos). Trabalhamos por vídeo avulso ou pacotes mensais para criadores e empresas — peça um orçamento pelo WhatsApp.',
+          a: 'Depende da duração e da complexidade (motion graphics, legendas, efeitos). Trabalhamos por vídeo avulso ou pacotes mensais para criadores e empresas. Peça um orçamento pelo WhatsApp.',
         },
         {
           q: 'Vocês editam vídeos para YouTube e para reels?',
@@ -448,7 +448,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Professional Video Editing for YouTube, Reels & Brands',
       intro: [
-        'Video is the language of the internet — and editing quality is what separates content that holds attention from content that gets skipped. Lumen Connection edits video professionally with Adobe Premiere Pro, After Effects and Blender.',
+        'Good editing decides whether people watch to the end or skip your video in the first seconds. Lumen Connection edits video professionally with Adobe Premiere Pro, After Effects and Blender.',
         'We edit everything: long-form YouTube videos with a dynamic style, Reels and stories optimized for retention, product commercials and institutional videos for companies.',
       ],
       sections: [
@@ -464,7 +464,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
       faq: [
         {
           q: 'How much does video editing cost?',
-          a: 'It depends on length and complexity (motion graphics, captions, effects). We work per video or on monthly packages for creators and companies — ask for a quote on WhatsApp.',
+          a: 'It depends on length and complexity (motion graphics, captions, effects). We work per video or on monthly packages for creators and companies. Ask for a quote on WhatsApp.',
         },
         {
           q: 'Do you edit for YouTube and for Reels?',
@@ -506,14 +506,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Design Gráfico, Branding e Identidade Visual',
       intro: [
-        'Design não é enfeite: é a forma como a sua marca se apresenta ao mundo. A Lumen Connection cria logos, identidades visuais completas, banners, cartões de visita, posters artísticos e materiais para redes sociais — sempre com conceito por trás de cada escolha.',
+        'Um logo amador afasta cliente; uma identidade bem construída passa confiança no primeiro contato. A Lumen Connection cria logos, identidades visuais completas, banners, cartões de visita, posters artísticos e materiais para redes sociais, com um conceito sustentando cada escolha.',
         'Atendemos empresas que estão nascendo e precisam de uma identidade do zero, e marcas estabelecidas que querem renovar sua presença visual.',
       ],
       sections: [
         {
           heading: 'Do logo ao design em movimento',
           body: [
-            'Além do design estático, criamos motion design — logos animados e vinhetas em After Effects que dão vida à marca em vídeos e redes sociais, como a animação do logo Queridas Compras. Também assinamos posters artísticos e ilustrações digitais com identidade marcante, e o design de interfaces completas como a revista digital DemoDisc.',
+            'Também criamos motion design: logos animados e vinhetas em After Effects para vídeos e redes sociais, como a animação do logo Queridas Compras. E assinamos posters artísticos, ilustrações digitais e interfaces completas, caso da revista digital DemoDisc.',
           ],
         },
       ],
@@ -533,7 +533,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
         },
         {
           q: 'Vocês criam artes para redes sociais?',
-          a: 'Sim. Criamos posts, capas, thumbnails e templates alinhados à identidade da sua marca — pontualmente ou em pacotes mensais.',
+          a: 'Sim. Criamos posts, capas, thumbnails e templates alinhados à identidade da sua marca, avulsos ou em pacotes mensais.',
         },
       ],
       ctaTitle: 'Sua marca merece um design profissional',
@@ -555,14 +555,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Graphic Design, Branding & Visual Identity',
       intro: [
-        'Design is not decoration: it is how your brand presents itself to the world. Lumen Connection creates logos, complete visual identities, banners, business cards, artistic posters and social media assets — always with a concept behind every choice.',
+        'An amateurish logo drives customers away; a well-built identity earns trust at first contact. Lumen Connection creates logos, complete visual identities, banners, business cards, artistic posters and social media assets, with a concept supporting every choice.',
         'We serve businesses that are just starting and need an identity from scratch, and established brands looking to refresh their visual presence.',
       ],
       sections: [
         {
           heading: 'From logo to motion design',
           body: [
-            'Beyond static design, we create motion design — animated logos and idents in After Effects that bring brands to life in videos and social media, like the Queridas Compras logo animation. We also craft artistic posters and digital illustrations with a strong identity, and full interface designs like the DemoDisc digital magazine.',
+            'We also create motion design: animated logos and idents in After Effects for video and social media, like the Queridas Compras logo animation. And we design artistic posters, digital illustrations and complete interfaces, such as the DemoDisc digital magazine.',
           ],
         },
       ],
@@ -582,7 +582,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
         },
         {
           q: 'Do you design social media assets?',
-          a: 'Yes. We create posts, covers, thumbnails and templates aligned with your brand identity — one-off or in monthly packages.',
+          a: 'Yes. We create posts, covers, thumbnails and templates aligned with your brand identity, one-off or in monthly packages.',
         },
       ],
       ctaTitle: 'Your brand deserves professional design',
@@ -610,14 +610,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Modelagem 3D, Animação e Renderização no Blender',
       intro: [
-        'Do conceito ao render final: a Lumen Connection modela, texturiza, anima e renderiza em 3D usando Blender. Criamos personagens, cenários, objetos e visualizações de produto com acabamento de alta fidelidade.',
-        'O 3D abre possibilidades que a fotografia não alcança: mostrar um produto que ainda não existe, criar um comercial inteiro sem sair do estúdio ou dar vida a um personagem da sua marca.',
+        'A Lumen Connection modela, texturiza, anima e renderiza em 3D usando Blender: personagens, cenários, objetos e visualizações de produto com acabamento de alta fidelidade.',
+        'Com 3D dá para mostrar um produto que ainda nem foi fabricado, produzir um comercial inteiro sem locação e animar o personagem da sua marca. A fotografia não chega lá.',
       ],
       sections: [
         {
           heading: 'O que produzimos em 3D',
           body: [
-            'Comerciais e trailers — como o nosso trailer comercial da Ferrari, modelado, animado e renderizado inteiramente no Blender —, visualização de produtos para e-commerce e marketing, cenários e ambientes, personagens estilizados e elementos 3D para vídeos e VFX.',
+            'Comerciais e trailers, como o nosso trailer da Ferrari, modelado, animado e renderizado inteiramente no Blender. Também produzimos visualização de produtos para e-commerce e marketing, cenários, personagens estilizados e elementos 3D para vídeos e VFX.',
           ],
         },
       ],
@@ -625,7 +625,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
       faq: [
         {
           q: 'Quanto custa um projeto de modelagem 3D?',
-          a: 'Depende da complexidade do modelo, da texturização e se há animação. Um objeto de produto é mais simples que um comercial completo — envie sua ideia e receba uma estimativa gratuita.',
+          a: 'Depende da complexidade do modelo, da texturização e se há animação. Um objeto de produto é mais simples que um comercial completo. Envie sua ideia e receba uma estimativa gratuita.',
         },
         {
           q: 'Vocês fazem animação além da modelagem?',
@@ -637,7 +637,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
         },
         {
           q: '3D serve para o marketing da minha empresa?',
-          a: 'Sim — visualizações 3D de produto elevam o padrão de anúncios, sites e redes sociais, e permitem mostrar variações e detalhes impossíveis numa foto.',
+          a: 'Sim. Visualizações 3D de produto deixam anúncios, sites e redes sociais com aparência mais profissional, além de mostrar variações e detalhes impossíveis numa foto.',
         },
       ],
       ctaTitle: 'Vamos criar em 3D?',
@@ -658,14 +658,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: '3D Modeling, Animation & Rendering in Blender',
       intro: [
-        'From concept to final render: Lumen Connection models, textures, animates and renders in 3D using Blender. We create characters, environments, objects and product visualizations with high-fidelity finishing.',
-        '3D opens possibilities photography cannot reach: showing a product that does not exist yet, producing an entire commercial without leaving the studio, or bringing your brand’s character to life.',
+        'Lumen Connection models, textures, animates and renders in 3D using Blender: characters, environments, objects and product visualizations with high-fidelity finishing.',
+        'With 3D you can show a product that has not been manufactured yet, produce an entire commercial without a film set, and animate your brand’s character. Photography cannot get there.',
       ],
       sections: [
         {
           heading: 'What we produce in 3D',
           body: [
-            'Commercials and trailers — like our Ferrari commercial trailer, modeled, animated and rendered entirely in Blender —, product visualization for e-commerce and marketing, environments, stylized characters and 3D elements for video and VFX.',
+            'Commercials and trailers, like our Ferrari trailer, modeled, animated and rendered entirely in Blender. We also produce product visualization for e-commerce and marketing, environments, stylized characters and 3D elements for video and VFX.',
           ],
         },
       ],
@@ -673,7 +673,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
       faq: [
         {
           q: 'How much does a 3D project cost?',
-          a: 'It depends on model complexity, texturing and whether there is animation. A product asset is simpler than a full commercial — send your idea for a free estimate.',
+          a: 'It depends on model complexity, texturing and whether there is animation. A product asset is simpler than a full commercial. Send your idea for a free estimate.',
         },
         {
           q: 'Do you animate as well as model?',
@@ -685,7 +685,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
         },
         {
           q: 'Is 3D useful for my company’s marketing?',
-          a: 'Yes — 3D product visualization raises the bar for ads, websites and social media, showing variations and details impossible in a photo.',
+          a: 'Yes. 3D product visualization makes ads, websites and social media look more professional, and shows variations and details impossible in a photo.',
         },
       ],
       ctaTitle: 'Let’s create in 3D',
@@ -713,14 +713,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Efeitos Visuais (VFX) e Motion Graphics',
       intro: [
-        'Efeitos visuais transformam um vídeo comum em algo memorável. A Lumen Connection cria VFX com Adobe After Effects, Blender e outras ferramentas profissionais: composição, rastreamento de movimento, integração de elementos 3D e motion graphics.',
+        'Aquela cena que parece impossível de ter sido filmada quase sempre é VFX. A Lumen Connection cria efeitos visuais com Adobe After Effects, Blender e outras ferramentas profissionais: composição, rastreamento de movimento, integração de elementos 3D e motion graphics.',
         'Aplicamos VFX em comerciais, vídeos para redes sociais, conteúdo para criadores e projetos audiovisuais que precisam daquele acabamento de cinema.',
       ],
       sections: [
         {
           heading: 'VFX e 3D no mesmo estúdio',
           body: [
-            'Como também dominamos modelagem 3D no Blender, integramos elementos tridimensionais em filmagens reais com iluminação e perspectiva consistentes — do produto flutuando na cena ao cenário inteiramente digital. Tudo em um único fluxo de trabalho, sem depender de terceiros.',
+            'Como também trabalhamos com modelagem 3D no Blender, integramos elementos tridimensionais em filmagens reais com iluminação e perspectiva consistentes: um produto flutuando na cena, um cenário inteiramente digital. Tudo dentro do mesmo estúdio, sem depender de terceiros.',
           ],
         },
       ],
@@ -732,7 +732,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
         },
         {
           q: 'VFX funciona em vídeo para redes sociais?',
-          a: 'Sim — efeitos bem aplicados aumentam muito a retenção em reels e Shorts. Adaptamos a complexidade ao formato e ao prazo do seu conteúdo.',
+          a: 'Sim. Efeitos bem aplicados aumentam muito a retenção em reels e Shorts. Adaptamos a complexidade ao formato e ao prazo do seu conteúdo.',
         },
         {
           q: 'Posso contratar VFX junto com a edição do vídeo?',
@@ -761,14 +761,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
       ],
       h1: 'Visual Effects (VFX) & Motion Graphics',
       intro: [
-        'Visual effects turn an ordinary video into something memorable. Lumen Connection creates VFX with Adobe After Effects, Blender and other professional tools: compositing, motion tracking, 3D integration and motion graphics.',
+        'That scene that looks impossible to have been filmed is almost always VFX. Lumen Connection creates visual effects with Adobe After Effects, Blender and other professional tools: compositing, motion tracking, 3D integration and motion graphics.',
         'We apply VFX to commercials, social media videos, creator content and audiovisual projects that need that cinematic finish.',
       ],
       sections: [
         {
           heading: 'VFX and 3D in the same studio',
           body: [
-            'Since we also master 3D modeling in Blender, we integrate three-dimensional elements into real footage with consistent lighting and perspective — from a product floating in the scene to a fully digital environment. All in a single workflow, with no third parties involved.',
+            'Since we also work with 3D modeling in Blender, we integrate three-dimensional elements into real footage with consistent lighting and perspective: a product floating in the scene, a fully digital environment. Everything inside the same studio, with no third parties involved.',
           ],
         },
       ],
@@ -780,7 +780,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
         },
         {
           q: 'Does VFX work for social media video?',
-          a: 'Yes — well-applied effects significantly increase retention on Reels and Shorts. We adapt complexity to your format and deadline.',
+          a: 'Yes. Well-applied effects significantly increase retention on Reels and Shorts. We adapt complexity to your format and deadline.',
         },
         {
           q: 'Can I hire VFX together with video editing?',

@@ -75,6 +75,11 @@ export function servicePath(locale: Locale, link: ServiceLink): string {
   return locale === 'en' ? `/en/services/${link.slugEn}` : `/servicos/${link.slugPt}`
 }
 
+/** Pares PT/EN de páginas avulsas (fora de /servicos). */
+const PAGE_PAIRS: { pt: string; en: string }[] = [
+  { pt: '/politica-de-cookies', en: '/en/cookie-policy' },
+]
+
 /**
  * Dado um pathname, retorna a rota equivalente no idioma alvo,
  * ou null quando não existe par conhecido (aí o switcher só troca o texto).
@@ -83,6 +88,9 @@ export function alternatePath(pathname: string, target: Locale): string | null {
   const path = pathname !== '/' && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
 
   if (path === '/' || path === '/en') return homePath(target)
+
+  const pair = PAGE_PAIRS.find((p) => p.pt === path || p.en === path)
+  if (pair) return target === 'en' ? pair.en : pair.pt
 
   const ptMatch = path.match(/^\/servicos\/([^/]+)$/)
   if (ptMatch) {

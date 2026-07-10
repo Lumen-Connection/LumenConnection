@@ -122,7 +122,15 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-10 sm:mt-12 md:mt-14 pt-6 sm:pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-          <p className="text-white/90 text-xs tracking-wider">{t('footer.copyright')}</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-5">
+            <p className="text-white/90 text-xs tracking-wider">{t('footer.copyright')}</p>
+            <a
+              href={locale === 'en' ? '/en/cookie-policy' : '/politica-de-cookies'}
+              className="text-white/60 text-xs tracking-wider underline underline-offset-4 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+            >
+              {t('footer.cookiePolicy')}
+            </a>
+          </div>
           <a
             href={`${homePath(locale)}#contact`}
             className="relative inline-flex items-center px-4 py-2 text-[10px] font-medium tracking-[0.25em] uppercase text-white/70 border border-white/10 hover:border-white/30 hover:text-white transition-colors"

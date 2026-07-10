@@ -21,19 +21,23 @@ export function ServiceHeader() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-md">
-      <div className="container mx-auto px-5 sm:px-6 h-16 flex items-center justify-between gap-4">
-        <a href={home} className="flex items-center shrink-0" aria-label={labels.homeAria}>
+      <div className="container mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3 sm:gap-4">
+        <a
+          href={home}
+          className="flex items-center shrink min-w-0 mr-2 sm:mr-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+          aria-label={labels.homeAria}
+        >
           <img
             src="/LC - Logos/Lumen Connection white logo.webp"
             alt="Lumen Connection"
             width={480}
             height={50}
-            className="h-8 sm:h-9 w-auto select-none"
+            className="h-5 sm:h-6 md:h-7 w-auto max-w-full select-none"
             draggable={false}
             decoding="async"
           />
         </a>
-        <nav className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm text-white/80">
+        <nav className="flex items-center shrink-0 gap-3 sm:gap-6 text-xs sm:text-sm text-white/80">
           <a
             href={`${home}#projects`}
             className="hidden sm:inline hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
@@ -46,7 +50,13 @@ export function ServiceHeader() {
           >
             {labels.contact}
           </a>
-          <LanguageSwitcher />
+          {/* Em telas pequenas o PT/EN expandido não cabe: entra o globo compacto */}
+          <div className="sm:hidden">
+            <LanguageSwitcher variant="compact" />
+          </div>
+          <div className="hidden sm:block">
+            <LanguageSwitcher />
+          </div>
         </nav>
       </div>
     </header>

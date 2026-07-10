@@ -151,9 +151,11 @@ export function GalleryModal({
               </button>
             </div>
 
-            {/* Image area */}
+            {/* Image area — altura explícita: os filhos são todos absolute
+                (Image fill), então sem ela a área colapsa para 0px; min-h-0
+                deixa o flex encolher quando o max-h-[95vh] do diálogo apertar */}
             <div
-              className="relative flex-1 min-h-0 bg-black flex items-center justify-center overflow-hidden"
+              className="relative h-[55vh] sm:h-[65vh] min-h-0 bg-black flex items-center justify-center overflow-hidden"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >

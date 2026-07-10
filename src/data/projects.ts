@@ -278,6 +278,19 @@ export const projects: Project[] = [
         subcategory: 'Branding',
         subcategory_en: 'Branding',
       },
+      {
+        id: 5,
+        title: 'Logo DemoDisc',
+        description: 'Identidade visual do logo da revista digital DemoDisc',
+        description_en: 'Visual identity for the DemoDisc digital magazine logo',
+        image: '/images/projects/branding/DemoDisc/demodisc-logo.png',
+        gallery: [
+          '/images/projects/branding/DemoDisc/demodisc-logo.png',
+          '/images/projects/branding/DemoDisc/demodisc-logo-transparent.png',
+        ],
+        subcategory: 'Branding',
+        subcategory_en: 'Branding',
+      },
     ],
   },
   {

@@ -1,15 +1,27 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { usePathname, useRouter } from 'next/navigation'
+import { m } from 'framer-motion'
 import { Globe } from 'lucide-react'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { useLocale } from '@/lib/i18n/LocaleContext'
 import { LOCALES, LOCALE_LABEL, type Locale } from '@/lib/i18n/translations'
+import { alternatePath } from '@/data/service-links'
 
 const SHORT_LABEL: Record<Locale, string> = { pt: 'PT', en: 'EN' }
 
 export function LanguageSwitcher({ className = '' }: { className?: string }) {
   const { locale, setLocale, t } = useLocale()
+  const pathname = usePathname()
+  const router = useRouter()
+
+  const handleSelect = (code: Locale) => {
+    // Persiste a preferência (comportamento original da home) e navega
+    // para a rota equivalente no outro idioma quando ela existir.
+    setLocale(code)
+    const target = alternatePath(pathname ?? '/', code)
+    if (target && target !== pathname) router.push(target)
+  }
 
   return (
     <div
@@ -27,10 +39,10 @@ export function LanguageSwitcher({ className = '' }: { className?: string }) {
       {LOCALES.map((code, i) => {
         const active = code === locale
         return (
-          <motion.button
+          <m.button
             key={code}
             type="button"
-            onClick={() => setLocale(code)}
+            onClick={() => handleSelect(code)}
             className={`relative inline-flex min-w-8 sm:min-w-9 items-center justify-center px-2 sm:px-2.5 text-[10px] sm:text-xs font-semibold tracking-[0.15em] uppercase transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 ${
               active
                 ? 'bg-white text-black shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)]'
@@ -41,7 +53,7 @@ export function LanguageSwitcher({ className = '' }: { className?: string }) {
             aria-label={`${t('lang.switchTo')} ${LOCALE_LABEL[code]}`}
           >
             {SHORT_LABEL[code]}
-          </motion.button>
+          </m.button>
         )
       })}
     </div>

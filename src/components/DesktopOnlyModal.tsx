@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
+import { m, AnimatePresence } from 'framer-motion'
 import { X, Monitor, Copy, Check, Download, Smartphone } from 'lucide-react'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { sanitizeUrl } from '@/lib/url'
@@ -90,7 +91,7 @@ export function DesktopOnlyModal({ item, onClose }: { item: ProjectItem; onClose
 
   return createPortal(
     <AnimatePresence>
-      <motion.div
+      <m.div
         className="fixed inset-0 z-[60]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -102,7 +103,7 @@ export function DesktopOnlyModal({ item, onClose }: { item: ProjectItem; onClose
           onClick={onClose}
         >
           <div aria-hidden="true" className="absolute inset-0 bg-black/85 backdrop-blur-sm" />
-          <motion.div
+          <m.div
             ref={dialogRef}
             role="alertdialog"
             aria-modal="true"
@@ -130,6 +131,7 @@ export function DesktopOnlyModal({ item, onClose }: { item: ProjectItem; onClose
                 {isVideo ? (
                   <video
                     src={item.image}
+                    poster={item.poster}
                     autoPlay
                     loop
                     muted
@@ -140,13 +142,13 @@ export function DesktopOnlyModal({ item, onClose }: { item: ProjectItem; onClose
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <img
+                  <Image
                     src={item.image}
                     alt=""
                     aria-hidden="true"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
+                    fill
+                    sizes="(max-width: 640px) 100vw, 512px"
+                    className="object-cover"
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent" />
@@ -228,9 +230,9 @@ export function DesktopOnlyModal({ item, onClose }: { item: ProjectItem; onClose
                 </button>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
     </AnimatePresence>,
     document.body,
   )

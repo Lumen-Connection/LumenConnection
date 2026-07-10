@@ -1,13 +1,23 @@
 import { useRef, useState, useEffect, useCallback, memo } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, AnimatePresence, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
+import Image from 'next/image'
+import { m, AnimatePresence, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
 import { ArrowRight, ArrowLeft, ExternalLink, Download, Code2, Images, ZoomIn } from 'lucide-react'
 import { categories, categoryTranslationKey, sectionProjects as projects, ProjectItem } from '@/app/portfolioData'
 import { CornerBrackets, SectionLabel } from '@/components/ui/corner-brackets'
+import dynamic from 'next/dynamic'
 import { hasMedia, isVideoSource } from '@/lib/media'
+import { LazyVideo } from '@/components/media/LazyVideo'
 import { sanitizeUrl } from '@/lib/url'
-import { DesktopOnlyModal } from '@/components/DesktopOnlyModal'
-import { GalleryModal } from '@/components/GalleryModal'
+
+const DesktopOnlyModal = dynamic(
+  () => import('@/components/DesktopOnlyModal').then((mod) => mod.DesktopOnlyModal),
+  { ssr: false },
+)
+const GalleryModal = dynamic(
+  () => import('@/components/GalleryModal').then((mod) => mod.GalleryModal),
+  { ssr: false },
+)
 import { useTranslation } from '@/lib/i18n/LocaleContext'
 import { tField } from '@/lib/i18n/tField'
 import type { TranslationKey } from '@/lib/i18n/translations'
@@ -35,7 +45,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, onSaibaMais }: {
   const bannerIsVideo = isVideoSource(mediaSrc)
 
   return (
-    <motion.div
+    <m.div
       className="relative overflow-hidden cursor-pointer group h-[300px] sm:h-[340px] md:h-[380px] w-full border border-white/10 hover:border-white/25 transition-colors"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -43,24 +53,18 @@ const ProjectCard = memo(function ProjectCard({ project, index, onSaibaMais }: {
       transition={{ duration: 0.6, delay: index * 0.1 }}
     >
       {bannerIsVideo ? (
-        <video
+        <LazyVideo
           aria-label={`Demonstração visual de ${project.title}`}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           src={mediaSrc}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          disablePictureInPicture
         />
       ) : (
-        <img
+        <Image
           src={mediaSrc}
           alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-          decoding="async"
+          fill
+          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
@@ -82,7 +86,7 @@ const ProjectCard = memo(function ProjectCard({ project, index, onSaibaMais }: {
             {description}
           </p>
         </div>
-        <motion.button
+        <m.button
           type="button"
           className="relative w-full py-2.5 border border-white/20 text-xs font-medium tracking-wide flex items-center justify-center gap-2 text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
           whileTap={{ scale: 0.98 }}
@@ -91,9 +95,9 @@ const ProjectCard = memo(function ProjectCard({ project, index, onSaibaMais }: {
         >
           <CornerBrackets />
           {t('item.learnMore')} <ArrowRight aria-hidden="true" className="w-3 h-3 transition-transform group-hover:translate-x-1" />
-        </motion.button>
+        </m.button>
       </div>
-    </motion.div>
+    </m.div>
   )
 })
 
@@ -132,7 +136,7 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
 
   return (
     <>
-    <motion.div
+    <m.div
       className={`relative overflow-hidden group h-[240px] sm:h-[260px] md:h-[280px] w-full border border-white/10 hover:border-white/25 transition-colors ${hasGallery ? 'cursor-pointer' : ''}`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -147,24 +151,19 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
     >
       {itemHasMedia && (
         isVideo ? (
-          <video
+          <LazyVideo
             src={item.image}
+            poster={item.poster}
             aria-label={`Demonstração visual de ${itemTitle}`}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            disablePictureInPicture
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <img
+          <Image
             src={item.image}
             alt={itemTitle}
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )
       )}
@@ -236,7 +235,7 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
           )
         ) : null}
       </div>
-    </motion.div>
+    </m.div>
     {showDesktopWarn && (
       <DesktopOnlyModal item={item} onClose={() => setShowDesktopWarn(false)} />
     )}
@@ -323,18 +322,13 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
     <>
       <section id="projects" ref={bannerRef} className="relative h-screen overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <motion.div className="absolute inset-0 scale-110" style={{ filter: bannerBlur }}>
+          <m.div className="absolute inset-0 scale-110" style={{ filter: bannerBlur }}>
             {bannerIsVideo ? (
-              <video
-                aria-hidden="true"
+              <LazyVideo
+                aria-hidden
                 className="absolute inset-0 w-full h-full object-cover"
                 src={DEFAULT_BANNER}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                disablePictureInPicture
+                poster="/videos/posters/video-banner.webp"
               />
             ) : (
               <div
@@ -342,12 +336,12 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
                 style={{ backgroundImage: `url(${DEFAULT_BANNER})` }}
               />
             )}
-          </motion.div>
+          </m.div>
           <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/75 via-[#000000]/50 to-[#000000]" />
         </div>
-        <motion.div className="absolute inset-0 bg-[#000000] z-[1]" style={{ opacity: bannerDimming }} />
+        <m.div className="absolute inset-0 bg-[#000000] z-[1]" style={{ opacity: bannerDimming }} />
         <div className="relative z-10 h-full w-full flex flex-col justify-end items-center px-5 sm:px-6 pb-14 sm:pb-20">
-          <motion.div
+          <m.div
             className="flex flex-col items-center text-center max-w-3xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -361,7 +355,7 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
             <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
               {t('projects.banner.body')}
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -376,7 +370,7 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
           <SectionLabel color="#f97316">{t('section.services')}</SectionLabel>
         </div>
         <div className="container mx-auto px-5 sm:px-6">
-          <motion.div
+          <m.div
             className="relative mb-8 sm:mb-12 -mx-5 sm:mx-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -392,7 +386,7 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
               {categories.map((category) => {
                 const active = activeCategory === category
                 return (
-                  <motion.button
+                  <m.button
                     key={category}
                     role="tab"
                     aria-selected={active}
@@ -406,14 +400,14 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
                   >
                     {!active && <CornerBrackets />}
                     {translateCategory(category)}
-                  </motion.button>
+                  </m.button>
                 )
               })}
             </div>
-          </motion.div>
+          </m.div>
           <AnimatePresence mode="wait">
             {isDetailView && activeProject ? (
-              <motion.div
+              <m.div
                 key={`detail-${activeCategory}`}
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -422,14 +416,14 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
               >
                 <div className="mb-6 max-w-6xl mx-auto">
                   <div className="hidden sm:flex items-center gap-4">
-                    <motion.button
+                    <m.button
                       onClick={handleBackToAll}
                       className="flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-white/80 hover:text-white transition-colors"
                       whileHover={{ x: -3 }}
                     >
                       <ArrowLeft className="w-3.5 h-3.5" />
                       {t('section.allServices')}
-                    </motion.button>
+                    </m.button>
                     <span className="text-white/15">|</span>
                     <div className="flex items-center gap-2">
                       <span className="h-px w-6" style={{ backgroundColor: activeProject.color }} />
@@ -443,7 +437,7 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
                   </div>
 
                   <div className="sm:hidden flex flex-col gap-3">
-                    <motion.button
+                    <m.button
                       onClick={handleBackToAll}
                       className="relative w-full min-h-[48px] flex items-center justify-center gap-2 px-5 py-3 border border-white/30 bg-white/5 text-white text-xs font-semibold tracking-[0.2em] uppercase active:bg-white/10 transition-colors"
                       whileTap={{ scale: 0.98 }}
@@ -452,7 +446,7 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
                       <CornerBrackets />
                       <ArrowLeft className="w-4 h-4" />
                       {t('section.allServices')}
-                    </motion.button>
+                    </m.button>
                     <div className="flex items-center gap-2">
                       <span className="h-px w-6" style={{ backgroundColor: activeProject.color }} />
                       <span
@@ -476,7 +470,7 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
                       {subcategories.map((sub) => {
                         const active = activeSubcategory === sub
                         return (
-                          <motion.button
+                          <m.button
                             key={sub}
                             role="tab"
                             aria-selected={active}
@@ -491,14 +485,14 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
                           >
                             {!active && <CornerBrackets />}
                             {subcategoryLabel(sub)}
-                          </motion.button>
+                          </m.button>
                         )
                       })}
                     </div>
                   </div>
                 )}
                 <AnimatePresence mode="wait">
-                  <motion.div
+                  <m.div
                     key={activeSubcategory}
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -509,38 +503,28 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
                     {visibleItems.map((item, index) => (
                       <ItemCard key={item.id} item={item} index={index} />
                     ))}
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
-              </motion.div>
+              </m.div>
             ) : (
-              <motion.div
+              <m.div
                 key="overview"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -24 }}
                 transition={{ duration: 0.35 }}
               >
-                <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto" layout>
-                  <AnimatePresence mode="popLayout">
-                    {projects.map((project, index) => (
-                      <motion.div
-                        key={project.id}
-                        layout
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <ProjectCard
-                          project={project}
-                          index={index}
-                          onSaibaMais={() => handleSaibaMais(project.category)}
-                        />
-                      </motion.div>
-                    ))}
-                  </AnimatePresence>
-                </motion.div>
-              </motion.div>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+                  {projects.map((project, index) => (
+                    <ProjectCard
+                      key={project.id}
+                      project={project}
+                      index={index}
+                      onSaibaMais={() => handleSaibaMais(project.category)}
+                    />
+                  ))}
+                </div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
@@ -548,7 +532,7 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
         {mounted && createPortal(
           <AnimatePresence>
             {isDetailView && (
-              <motion.div
+              <m.div
                 key="mobile-floating-back-wrapper"
                 className="sm:hidden fixed bottom-5 left-5 z-[55]"
                 initial={{ opacity: 0, y: 20 }}
@@ -566,7 +550,7 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
                   <ArrowLeft aria-hidden="true" className="w-4 h-4" />
                   Voltar
                 </button>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>,
           document.body,

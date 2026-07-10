@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { Download, X, Share, Plus } from 'lucide-react'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { useTranslation } from '@/lib/i18n/LocaleContext'
@@ -108,7 +108,7 @@ export function PWAInstaller() {
 
   return (
     <AnimatePresence>
-      <motion.div
+      <m.div
         role="dialog"
         aria-modal="false"
         aria-labelledby="pwa-install-title"
@@ -196,7 +196,7 @@ export function PWAInstaller() {
             </div>
           )}
         </div>
-      </motion.div>
+      </m.div>
     </AnimatePresence>
   )
 }

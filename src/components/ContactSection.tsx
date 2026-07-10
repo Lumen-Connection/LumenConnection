@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Phone, ArrowUpRight, User } from 'lucide-react'
 import { CornerBrackets, SectionLabel } from '@/components/ui/corner-brackets'
 import { CONTACT, buildWhatsAppUrl } from '@/lib/contact'
@@ -33,7 +33,7 @@ export function ContactSection() {
         </div>
 
         <div className="max-w-md mx-auto mb-10 sm:mb-12">
-          <motion.a
+          <m.a
             href={buildWhatsAppUrl()}
             target="_blank"
             rel="noreferrer"
@@ -61,7 +61,7 @@ export function ContactSection() {
                 {t('contact.callNow')}
               </span>
             </div>
-          </motion.a>
+          </m.a>
         </div>
 
         <div className="max-w-5xl mx-auto" role="region" aria-labelledby="team-heading">
@@ -70,7 +70,7 @@ export function ContactSection() {
           </h3>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 list-none">
             {team.map((member, index) => (
-              <motion.li
+              <m.li
                 key={member.name}
                 className="group relative border border-white/10 bg-white/[0.02] px-6 py-6 flex flex-col gap-4"
                 initial={{ opacity: 0, y: 24 }}
@@ -86,7 +86,7 @@ export function ContactSection() {
                   <p className="text-sm font-semibold text-white leading-tight mb-1">{member.name}</p>
                   <p className="text-xs text-white/90 leading-relaxed">{t(member.roleKey)}</p>
                 </div>
-              </motion.li>
+              </m.li>
             ))}
           </ul>
         </div>

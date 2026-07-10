@@ -32,13 +32,22 @@ function detectInitialLocale(): Locale {
   return DEFAULT_LOCALE
 }
 
-export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE)
+export function LocaleProvider({
+  children,
+  forcedLocale,
+}: {
+  children: React.ReactNode
+  forcedLocale?: Locale
+}) {
+  const [locale, setLocaleState] = useState<Locale>(forcedLocale ?? DEFAULT_LOCALE)
 
   useEffect(() => {
+    // Rotas com idioma próprio (/en, /servicos) não usam a detecção
+    // por localStorage/navigator — o idioma vem da URL.
+    if (forcedLocale) return
     const detected = detectInitialLocale()
     setLocaleState(detected)
-  }, [])
+  }, [forcedLocale])
 
   useEffect(() => {
     if (typeof document !== 'undefined') {

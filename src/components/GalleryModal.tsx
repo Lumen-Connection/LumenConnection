@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
+import { m, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { useTranslation } from '@/lib/i18n/LocaleContext'
@@ -84,19 +85,6 @@ export function GalleryModal({
     }
   }, [mounted, onClose, next, prev])
 
-  // Preload adjacent images
-  useEffect(() => {
-    if (!mounted) return
-    const preload = (src: string) => {
-      const img = new window.Image()
-      img.src = src
-    }
-    const nextSrc = images[(index + 1) % total]
-    const prevSrc = images[(index - 1 + total) % total]
-    if (nextSrc) preload(nextSrc)
-    if (prevSrc) preload(prevSrc)
-  }, [index, images, total, mounted])
-
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX
   }
@@ -112,7 +100,7 @@ export function GalleryModal({
 
   return createPortal(
     <AnimatePresence>
-      <motion.div
+      <m.div
         className="fixed inset-0 z-[60]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -125,7 +113,7 @@ export function GalleryModal({
         >
           <div aria-hidden="true" className="absolute inset-0 bg-black/90 backdrop-blur-sm" />
 
-          <motion.div
+          <m.div
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
@@ -170,20 +158,38 @@ export function GalleryModal({
               onTouchEnd={handleTouchEnd}
             >
               <AnimatePresence mode="wait" initial={false}>
-                <motion.img
+                <m.div
                   key={images[index]}
-                  src={images[index]}
-                  alt={`${title} — ${t('gallery.pageAria')} ${index + 1} ${t('gallery.of')} ${total}`}
-                  className="max-w-full max-h-full w-auto h-auto object-contain select-none"
-                  draggable={false}
+                  className="absolute inset-0"
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.22, ease: 'easeOut' }}
-                  loading="eager"
-                  decoding="async"
-                />
+                >
+                  <Image
+                    src={images[index]}
+                    alt={`${title} — ${t('gallery.pageAria')} ${index + 1} ${t('gallery.of')} ${total}`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 1024px"
+                    className="object-contain select-none"
+                    draggable={false}
+                    priority
+                  />
+                </m.div>
               </AnimatePresence>
+
+              {/* Pré-carrega as páginas adjacentes com as mesmas URLs otimizadas */}
+              {total > 1 && (
+                <div aria-hidden="true" className="absolute bottom-0 left-0 w-px h-px opacity-0 pointer-events-none">
+                  {[images[(index + 1) % total], images[(index - 1 + total) % total]]
+                    .filter((s, i, arr) => !!s && s !== images[index] && arr.indexOf(s) === i)
+                    .map((s) => (
+                      <div key={s} className="relative w-px h-px">
+                        <Image src={s} alt="" fill sizes="(max-width: 1024px) 100vw, 1024px" loading="eager" />
+                      </div>
+                    ))}
+                </div>
+              )}
 
               {total > 1 && (
                 <>
@@ -238,13 +244,13 @@ export function GalleryModal({
                               : 'border-white/10 hover:border-white/30 opacity-60 hover:opacity-100'
                           }`}
                         >
-                          <img
+                          <Image
                             src={src}
                             alt=""
                             aria-hidden="true"
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover"
+                            fill
+                            sizes="64px"
+                            className="object-cover"
                           />
                         </button>
                       )
@@ -275,9 +281,9 @@ export function GalleryModal({
                 </button>
               </div>
             )}
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
     </AnimatePresence>,
     document.body,
   )

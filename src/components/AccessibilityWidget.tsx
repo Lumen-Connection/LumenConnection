@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import {
   Accessibility,
   X,
@@ -211,7 +211,7 @@ export function AccessibilityWidget() {
       <AnimatePresence>
         {open && (
           <>
-            <motion.div
+            <m.div
               key="a11y-backdrop"
               className="sm:hidden fixed inset-0 z-[65] bg-black/60 backdrop-blur-sm"
               initial={{ opacity: 0 }}
@@ -221,7 +221,7 @@ export function AccessibilityWidget() {
               onClick={() => setOpen(false)}
               aria-hidden
             />
-            <motion.div
+            <m.div
               id="a11y-panel"
               ref={panelRef}
               role="dialog"
@@ -394,7 +394,7 @@ export function AccessibilityWidget() {
                 {t('a11y.restoreDefaults')}
               </button>
             </div>
-            </motion.div>
+            </m.div>
           </>
         )}
       </AnimatePresence>

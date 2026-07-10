@@ -198,6 +198,7 @@ export const projects: Project[] = [
         description: 'Edição de vídeo comercial do DylannArts',
         description_en: 'Commercial video edit for DylannArts',
         image: '/videos/projects/adesivos-copa-mundo-fifa.webm',
+        poster: '/videos/posters/adesivos-copa-mundo-fifa.webp',
         url: 'https://www.instagram.com/reel/DXnNKkkEY_6/?igsh=cm5xMTlkdjdrcnZ4',
         subcategory: 'Adobe After Effects',
       },

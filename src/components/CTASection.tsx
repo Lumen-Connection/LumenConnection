@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { CornerBrackets, SectionLabel } from '@/components/ui/corner-brackets'
 import { useTranslation } from '@/lib/i18n/LocaleContext'
@@ -14,7 +14,7 @@ export function CTASection({ onVerPortfolio }: { onVerPortfolio?: () => void }) 
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div
+        <m.div
           className="flex flex-col items-center text-center max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,23 +33,23 @@ export function CTASection({ onVerPortfolio }: { onVerPortfolio?: () => void }) 
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <motion.a
+            <m.a
               href="#contact"
               className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 bg-white text-black font-medium text-xs sm:text-sm tracking-wide hover:bg-white/90 transition-colors"
               whileTap={{ scale: 0.98 }}
             >
               {t('cta.start')} <ArrowRight aria-hidden="true" className="w-4 h-4" />
-            </motion.a>
-            <motion.button
+            </m.a>
+            <m.button
               onClick={onVerPortfolio}
               className="relative inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 border border-white/15 text-white/85 font-medium text-xs sm:text-sm tracking-wide hover:border-white/35 hover:bg-white/5 transition-colors"
               whileTap={{ scale: 0.98 }}
             >
               <CornerBrackets />
               {t('cta.portfolio')}
-            </motion.button>
+            </m.button>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

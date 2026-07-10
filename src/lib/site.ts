@@ -4,7 +4,10 @@ export const SITE = {
   locale: 'pt_BR',
   description:
     'Estúdio digital que une engenharia de software e produção visual de alta fidelidade. Web, mobile, branding, vídeo e 3D. João Pessoa, PB.',
+  descriptionEn:
+    'Digital studio blending software engineering and high-fidelity visual production. Web, mobile, branding, video and 3D. João Pessoa, Brazil.',
   shortDescription: 'O elo entre engenharia digital e estética visual.',
+  shortDescriptionEn: 'The link between digital engineering and visual aesthetics.',
   themeColor: '#0a0a0a',
   ogImage: '/og-image.png',
   ogImageWidth: 1200,

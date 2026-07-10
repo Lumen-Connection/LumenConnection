@@ -246,7 +246,14 @@ export const translations = {
     'footer.contact': 'Entre em contato',
     'footer.emailAria': 'Enviar e-mail para',
     'footer.whatsappAria': 'Falar no WhatsApp pelo número',
+    'footer.instagramAria': 'Seguir a Lumen Connection no Instagram',
+    'footer.twitterAria': 'Seguir a Lumen Connection no X (Twitter)',
+    'footer.services': 'Serviços',
     'footer.copyright': '🄯 2026 Lumen Connection',
+
+    // SEO
+    'hero.seoTitle':
+      'Lumen Connection: desenvolvimento web, criação de sites, aplicativos, edição de vídeos, design gráfico, modelagem 3D e VFX em João Pessoa',
 
     // Language switcher
     'lang.label': 'Idioma',
@@ -550,7 +557,14 @@ export const translations = {
     'footer.contact': 'Contact Us',
     'footer.emailAria': 'Send email to',
     'footer.whatsappAria': 'Message on WhatsApp at',
+    'footer.instagramAria': 'Follow Lumen Connection on Instagram',
+    'footer.twitterAria': 'Follow Lumen Connection on X (Twitter)',
+    'footer.services': 'Services',
     'footer.copyright': '🄯 2026 Lumen Connection',
+
+    // SEO
+    'hero.seoTitle':
+      'Lumen Connection: web development, websites, apps, video editing, graphic design, 3D modeling and VFX studio in João Pessoa, Brazil',
 
     // Language switcher
     'lang.label': 'Language',

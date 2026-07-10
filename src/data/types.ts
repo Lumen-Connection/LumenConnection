@@ -7,6 +7,8 @@ export type ProjectItem = {
   description: string
   description_en?: string
   image: string
+  /** Poster exibido enquanto o vídeo (quando image é vídeo) não é carregado. */
+  poster?: string
   url?: string
   downloadUrl?: string
   desktopOnly?: boolean

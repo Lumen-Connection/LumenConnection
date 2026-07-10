@@ -1,12 +1,14 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { m, useScroll, useTransform } from 'framer-motion'
 import { CornerBrackets, SectionLabel } from '@/components/ui/corner-brackets'
 import { useTranslation } from '@/lib/i18n/LocaleContext'
+import { useActiveColor } from '@/lib/active-color'
 
-export function AboutSection({ activeColor = '#f97316' }: { activeColor?: string }) {
+export function AboutSection() {
   const { t } = useTranslation()
+  const { activeColor } = useActiveColor()
   const pillars = [
     {
       word: 'Lumen',
@@ -42,7 +44,7 @@ export function AboutSection({ activeColor = '#f97316' }: { activeColor?: string
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div
+        <m.div
           className="flex flex-col items-center text-center mb-14 sm:mb-20 md:mb-24"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,11 +58,11 @@ export function AboutSection({ activeColor = '#f97316' }: { activeColor?: string
           <p className="text-white/90 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             {t('about.intro')}
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="relative max-w-5xl mx-auto">
           <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-white/5 hidden md:block">
-            <motion.div
+            <m.div
               className="w-full bg-gradient-to-b from-orange-500 via-blue-500 to-transparent origin-top"
               style={{ scaleY: lineScale, height: '100%' }}
             />
@@ -68,7 +70,7 @@ export function AboutSection({ activeColor = '#f97316' }: { activeColor?: string
 
           <div className="space-y-16 md:space-y-0">
             {pillars.map((pillar, i) => (
-              <motion.div
+              <m.div
                 key={pillar.word}
                 className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-16 ${
                   i % 2 === 1 ? 'md:flex-row-reverse' : ''
@@ -106,12 +108,12 @@ export function AboutSection({ activeColor = '#f97316' }: { activeColor?: string
                   style={{ backgroundColor: pillar.accent, boxShadow: `0 0 12px ${pillar.accent}80` }}
                 />
                 <div className="flex-1 hidden md:block" />
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
 
-        <motion.div
+        <m.div
           className="mt-16 sm:mt-20 md:mt-28 text-center max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +130,7 @@ export function AboutSection({ activeColor = '#f97316' }: { activeColor?: string
           <p className="mt-8 text-white/90 text-[10px] tracking-[0.3em] uppercase">
             — Lumen Connection
           </p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

@@ -1,11 +1,17 @@
 import { useState } from 'react'
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { m, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import { navItems } from '@/app/portfolioData'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
-import { LumenAIModal } from '@/components/LumenAIModal'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+
+const LumenAIModal = dynamic(
+  () => import('@/components/LumenAIModal').then((mod) => mod.LumenAIModal),
+  { ssr: false },
+)
 import { useTranslation } from '@/lib/i18n/LocaleContext'
+import { useActiveColor } from '@/lib/active-color'
 import type { TranslationKey } from '@/lib/i18n/translations'
 
 const NAV_KEY_BY_HREF: Record<string, TranslationKey> = {
@@ -15,8 +21,9 @@ const NAV_KEY_BY_HREF: Record<string, TranslationKey> = {
   '#contact': 'nav.contact',
 }
 
-export function Header({ activeColor = '#f97316' }: { activeColor?: string }) {
+export function Header() {
   const { t } = useTranslation()
+  const { activeColor } = useActiveColor()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isLumenAIModalOpen, setIsLumenAIModalOpen] = useState(false)
   const openLumenAIModal = () => {
@@ -41,11 +48,15 @@ export function Header({ activeColor = '#f97316' }: { activeColor?: string }) {
   const headerOpacity = useTransform(scrollY, [0, 700], [1, 0])
   const headerY = useTransform(scrollY, [0, 700], [0, -120])
 
+  // @container + variantes @6xl (72rem): como rem escala com o zoom de texto
+  // do widget de acessibilidade, o header colapsa para o menu hambúrguer quando
+  // o conteúdo deixa de caber — coisa que breakpoints md: (px de viewport) não
+  // detectam.
   return (
-    <motion.header role="banner" className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: headerBackground, opacity: headerOpacity, y: headerY }}>
+    <m.header role="banner" className="@container fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: headerBackground, opacity: headerOpacity, y: headerY }}>
       <div className="container mx-auto px-5 sm:px-6 py-4 sm:py-5">
         <div className="flex items-center justify-between">
-          <motion.a
+          <m.a
             href="#home"
             aria-label={t('nav.goHomeAria')}
             className="flex items-center shrink min-w-0 mr-3 sm:mr-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
@@ -63,25 +74,25 @@ export function Header({ activeColor = '#f97316' }: { activeColor?: string }) {
               decoding="async"
               fetchPriority="high"
             />
-          </motion.a>
+          </m.a>
 
-          <nav aria-label={t('nav.mainLabel')} className="hidden md:flex items-center gap-7">
+          <nav aria-label={t('nav.mainLabel')} className="hidden @6xl:flex items-center gap-7">
             {navItems.map((item, i) => (
-              <motion.a
+              <m.a
                 key={item.href}
                 href={item.href}
-                className="text-xs font-medium tracking-[0.15em] uppercase text-white/90 hover:text-white transition-colors"
+                className="whitespace-nowrap text-xs font-medium tracking-[0.15em] uppercase text-white/90 hover:text-white transition-colors"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * i }}
               >
                 {navLabel(item.href, item.label)}
-              </motion.a>
+              </m.a>
             ))}
-            <motion.button
+            <m.button
               type="button"
               onClick={openLumenAIModal}
-              className="group relative inline-flex items-center px-3.5 py-1.5 text-xs font-semibold tracking-[0.15em] uppercase border focus-visible:outline-none focus-visible:ring-2"
+              className="group relative inline-flex items-center whitespace-nowrap px-3.5 py-1.5 text-xs font-semibold tracking-[0.15em] uppercase border focus-visible:outline-none focus-visible:ring-2"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 * navItems.length }}
@@ -95,24 +106,24 @@ export function Header({ activeColor = '#f97316' }: { activeColor?: string }) {
             >
               <CornerBrackets color={`${activeColor}bf`} />
               Lumen AI
-            </motion.button>
+            </m.button>
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden @6xl:flex items-center gap-3">
             <LanguageSwitcher />
-            <motion.a
+            <m.a
               href="#contact"
-              className="relative inline-flex items-center px-5 py-2.5 text-xs font-medium tracking-[0.15em] uppercase text-white/90 border border-white/15 hover:border-white/40 hover:bg-white/5 transition-colors"
+              className="relative inline-flex items-center whitespace-nowrap px-5 py-2.5 text-xs font-medium tracking-[0.15em] uppercase text-white/90 border border-white/15 hover:border-white/40 hover:bg-white/5 transition-colors"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
               <CornerBrackets />
               {t('nav.contactCta')}
-            </motion.a>
+            </m.a>
           </div>
 
-          <div className="md:hidden flex items-center gap-3 sm:gap-4">
+          <div className="@6xl:hidden flex items-center gap-3 sm:gap-4">
             <LanguageSwitcher />
             <span aria-hidden="true" className="w-px h-5 bg-white/15" />
             <button
@@ -131,9 +142,9 @@ export function Header({ activeColor = '#f97316' }: { activeColor?: string }) {
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
+          <m.div
             id="mobile-nav"
-            className="md:hidden absolute top-full left-0 right-0 bg-[#0a0a0a] border-t border-white/10"
+            className="@6xl:hidden absolute top-full left-0 right-0 bg-[#0a0a0a] border-t border-white/10"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -168,11 +179,11 @@ export function Header({ activeColor = '#f97316' }: { activeColor?: string }) {
                 {t('nav.contactCta')}
               </a>
             </nav>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
       {isLumenAIModalOpen && <LumenAIModal onClose={() => setIsLumenAIModalOpen(false)} activeColor={activeColor} />}
-    </motion.header>
+    </m.header>
   )
 }

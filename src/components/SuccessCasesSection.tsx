@@ -2,13 +2,19 @@
 
 import { useState, useEffect, useRef, memo, useCallback } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
+import { m, AnimatePresence } from 'framer-motion'
 import { successCases } from '@/app/portfolioData'
 import { X, Play, ExternalLink } from 'lucide-react'
 import { CornerBrackets, SectionLabel } from '@/components/ui/corner-brackets'
+import dynamic from 'next/dynamic'
 import { hasMedia } from '@/lib/media'
 import { sanitizeUrl } from '@/lib/url'
-import { LumenAIModal } from '@/components/LumenAIModal'
+
+const LumenAIModal = dynamic(
+  () => import('@/components/LumenAIModal').then((mod) => mod.LumenAIModal),
+  { ssr: false },
+)
 import { useTranslation } from '@/lib/i18n/LocaleContext'
 import { tField } from '@/lib/i18n/tField'
 
@@ -90,7 +96,7 @@ function CaseModal({ stat, onClose }: { stat: typeof successCases[0]; onClose: (
 
   return createPortal(
     <AnimatePresence>
-      <motion.div
+      <m.div
         className="fixed inset-0 z-50"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -102,7 +108,7 @@ function CaseModal({ stat, onClose }: { stat: typeof successCases[0]; onClose: (
         onClick={onClose}
       >
         <div aria-hidden="true" className="absolute inset-0 bg-black/85 backdrop-blur-sm" />
-        <motion.div
+        <m.div
           ref={dialogRef}
           role="dialog"
           aria-modal="true"
@@ -131,12 +137,12 @@ function CaseModal({ stat, onClose }: { stat: typeof successCases[0]; onClose: (
             className="block relative group"
           >
             <div className="relative w-full aspect-video overflow-hidden">
-              <img
+              <Image
                 src={stat.imagem}
                 alt={nome}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fill
+                sizes="(max-width: 672px) 100vw, 672px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className={`flex items-center gap-3 px-6 py-3 ${hoverCtaBg} text-white font-medium text-sm shadow-lg`}>
@@ -189,9 +195,9 @@ function CaseModal({ stat, onClose }: { stat: typeof successCases[0]; onClose: (
               </button>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
-      </motion.div>
+      </m.div>
     </AnimatePresence>,
     document.body,
   )
@@ -224,12 +230,12 @@ const StatCardInner = memo(function StatCardInner({ stat, index }: { stat: typeo
   return (
     <>
       <div className="relative w-20 h-20 md:w-24 md:h-24 overflow-hidden border border-white/10 bg-black/40 shrink-0">
-        <img
+        <Image
           src={stat.imagem}
           alt={nome}
-          loading="lazy"
-          decoding="async"
-          className="w-full h-full object-cover"
+          fill
+          sizes="96px"
+          className="object-cover"
         />
       </div>
       <div className="relative z-10 flex flex-col justify-center flex-1 min-w-0">
@@ -262,7 +268,7 @@ const StatCard = memo(function StatCard({
 
   if (stat.url || isLumenAI) {
     return (
-      <motion.div
+      <m.div
         initial={{ opacity: 0, x: 24 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -277,14 +283,14 @@ const StatCard = memo(function StatCard({
         >
           <StatCardInner stat={stat} index={index} />
         </button>
-      </motion.div>
+      </m.div>
     )
   }
 
   return (
-    <motion.div {...sharedMotionProps(index)}>
+    <m.div {...sharedMotionProps(index)}>
       <StatCardInner stat={stat} index={index} />
-    </motion.div>
+    </m.div>
   )
 })
 
@@ -303,7 +309,7 @@ export function SuccessCasesSection() {
       <div className="container mx-auto px-5 sm:px-6 flex-1 flex flex-col min-h-0 relative z-10">
         <div className="w-full max-w-7xl mx-auto h-full flex items-stretch">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6 w-full lg:min-h-[95vh] items-stretch">
-            <motion.div
+            <m.div
               className="lg:col-span-7 relative overflow-hidden group h-full flex flex-col bg-white/[0.02] border border-white/10"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -312,12 +318,12 @@ export function SuccessCasesSection() {
             >
               <CornerBrackets color="rgba(255,255,255,0.6)" size={14} inset={-6} />
               <div className="relative w-full h-56 md:h-64 shrink-0 overflow-hidden">
-                <img
+                <Image
                   src="/success-cases/banner-code-edit.webp"
                   alt={t('successCases.bannerAlt')}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent" />
               </div>
@@ -347,7 +353,7 @@ export function SuccessCasesSection() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </m.div>
 
             <div className="lg:col-span-5 flex flex-col gap-4 h-full">
               {successCases.map((stat, index) => (

@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
+import { m, AnimatePresence } from 'framer-motion'
 import { X, MessageCircle, Bot, Shield, Clock } from 'lucide-react'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { buildWhatsAppUrl } from '@/lib/contact'
@@ -74,7 +75,7 @@ export function LumenAIModal({ onClose, activeColor = '#f97316' }: { onClose: ()
 
   return createPortal(
     <AnimatePresence>
-      <motion.div
+      <m.div
         className="fixed inset-0 z-[60]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -86,7 +87,7 @@ export function LumenAIModal({ onClose, activeColor = '#f97316' }: { onClose: ()
           onClick={onClose}
         >
           <div aria-hidden="true" className="absolute inset-0 bg-black/85 backdrop-blur-sm" />
-          <motion.div
+          <m.div
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
@@ -118,9 +119,11 @@ export function LumenAIModal({ onClose, activeColor = '#f97316' }: { onClose: ()
               }}
             >
               <div className="flex flex-col items-center text-center mb-6">
-                <img
+                <Image
                   src="/LC - Logos/Lumen Connection Alternative white logo.png"
                   alt="Lumen AI"
+                  width={112}
+                  height={120}
                   className="h-14 w-auto mb-5 select-none"
                   draggable={false}
                   style={{ filter: `drop-shadow(0 2px 8px ${activeColor}40)` }}
@@ -165,7 +168,7 @@ export function LumenAIModal({ onClose, activeColor = '#f97316' }: { onClose: ()
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <motion.a
+                <m.a
                   href={sanitizeUrl(buildWhatsAppUrl(t('lumenAI.ctaMessage')))}
                   target="_blank"
                   rel="noreferrer"
@@ -176,7 +179,7 @@ export function LumenAIModal({ onClose, activeColor = '#f97316' }: { onClose: ()
                 >
                   <MessageCircle aria-hidden="true" size={16} />
                   {t('lumenAI.cta')}
-                </motion.a>
+                </m.a>
                 <button
                   type="button"
                   onClick={onClose}
@@ -189,9 +192,9 @@ export function LumenAIModal({ onClose, activeColor = '#f97316' }: { onClose: ()
                 </button>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
     </AnimatePresence>,
     document.body,
   )

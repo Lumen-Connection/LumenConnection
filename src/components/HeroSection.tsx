@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion'
+import Image from 'next/image'
+import { m, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion'
 import { ArrowRight, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react'
 import { heroProjects as projects } from '@/app/portfolioData'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { buildWhatsAppUrl, buildProjectInterestMessage } from '@/lib/contact'
 import { sanitizeUrl } from '@/lib/url'
 import { useTranslation } from '@/lib/i18n/LocaleContext'
+import { useActiveColor } from '@/lib/active-color'
 import { tField } from '@/lib/i18n/tField'
 
 function HeroSlide({ project, isActive, onVerProjeto, skipEntryAnimation = false }: { project: typeof projects[0]; isActive: boolean; onVerProjeto: () => void; skipEntryAnimation?: boolean }) {
@@ -21,19 +23,27 @@ function HeroSlide({ project, isActive, onVerProjeto, skipEntryAnimation = false
   const ctaHref = sanitizeUrl(explicitCtaHref ?? whatsappHref)
 
   return (
-    <motion.div
+    <m.div
       role="group"
       aria-roledescription="slide"
       aria-label={`${category}: ${title}`}
       className="absolute inset-0"
-      initial={{ opacity: 0 }}
+      initial={skipEntryAnimation ? false : { opacity: 0 }}
       animate={{ opacity: isActive ? 1 : 0 }}
       transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
       {project.image && project.image !== '/' && (
         <>
           <div className="absolute inset-0 z-0">
-            <img src={project.image} alt={`${title} — ${category}`} className="w-full h-full object-cover" decoding={isActive ? 'sync' : 'async'} fetchPriority={isActive ? 'high' : 'low'} loading="eager" />
+            <Image
+              src={project.image}
+              alt={`${title} — ${category}`}
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority={isActive}
+              fetchPriority={isActive ? 'high' : 'low'}
+            />
           </div>
           <div className="absolute inset-0 z-[1] bg-gradient-to-br from-black/80 via-black/65 to-black/85" aria-hidden />
           <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/60 via-transparent to-transparent" aria-hidden />
@@ -51,7 +61,7 @@ function HeroSlide({ project, isActive, onVerProjeto, skipEntryAnimation = false
       <div className="relative z-10 h-full flex items-center">
         <div className="container mx-auto px-5 sm:px-6 lg:px-12">
           <div className="max-w-4xl">
-            <motion.div
+            <m.div
               initial={skipEntryAnimation ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 20 }}
               transition={{ duration: 0.6, delay: skipEntryAnimation ? 0 : 0.15 }}
@@ -64,10 +74,12 @@ function HeroSlide({ project, isActive, onVerProjeto, skipEntryAnimation = false
               >
                 {category}
               </span>
-            </motion.div>
+            </m.div>
 
+            {/* Títulos dos slides são m.p — o único h1 da página é o
+                estático (sr-only) no topo da seção */}
             {project.title === 'Lumen Connection' ? (
-              <motion.h1
+              <m.p
                 className="mb-4 sm:mb-5"
                 initial={skipEntryAnimation ? false : { opacity: 0, y: 30 }}
                 animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 30 }}
@@ -86,9 +98,9 @@ function HeroSlide({ project, isActive, onVerProjeto, skipEntryAnimation = false
                   fetchPriority={isActive ? 'high' : 'low'}
                   loading="eager"
                 />
-              </motion.h1>
+              </m.p>
             ) : (
-              <motion.h1
+              <m.p
                 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-5 leading-[1.05] tracking-tight text-white"
                 style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}
                 initial={skipEntryAnimation ? false : { opacity: 0, y: 30 }}
@@ -96,21 +108,21 @@ function HeroSlide({ project, isActive, onVerProjeto, skipEntryAnimation = false
                 transition={{ duration: 0.6, delay: skipEntryAnimation ? 0 : 0.25 }}
               >
                 {title}
-              </motion.h1>
+              </m.p>
             )}
 
             {subtitle && (
-              <motion.p
+              <m.p
                 className="text-xs md:text-sm font-medium tracking-[0.3em] uppercase mb-6 text-yellow-300"
                 initial={skipEntryAnimation ? false : { opacity: 0, y: 15 }}
                 animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 15 }}
                 transition={{ duration: 0.6, delay: skipEntryAnimation ? 0 : 0.3 }}
               >
                 {subtitle}
-              </motion.p>
+              </m.p>
             )}
 
-            <motion.p
+            <m.p
               className="text-sm sm:text-base md:text-lg text-white/90 mb-7 sm:mb-10 max-w-xl leading-relaxed"
               style={{ textShadow: '0 1px 3px rgba(0,0,0,0.6)' }}
               initial={skipEntryAnimation ? false : { opacity: 0, y: 30 }}
@@ -118,15 +130,15 @@ function HeroSlide({ project, isActive, onVerProjeto, skipEntryAnimation = false
               transition={{ duration: 0.6, delay: skipEntryAnimation ? 0 : 0.35 }}
             >
               {description}
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               className="flex flex-wrap items-center gap-3"
               initial={skipEntryAnimation ? false : { opacity: 0, y: 30 }}
               animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 30 }}
               transition={{ duration: 0.6, delay: skipEntryAnimation ? 0 : 0.45 }}
             >
-              <motion.a
+              <m.a
                 href={ctaHref}
                 target={explicitCtaHref ? undefined : '_blank'}
                 rel={explicitCtaHref ? undefined : 'noreferrer'}
@@ -135,32 +147,31 @@ function HeroSlide({ project, isActive, onVerProjeto, skipEntryAnimation = false
               >
                 {ctaLabel}
                 <ArrowRight aria-hidden="true" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </motion.a>
+              </m.a>
 
-              <motion.button
+              <m.button
                 className="relative group inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 text-white/90 font-medium text-xs sm:text-sm tracking-wide border border-white/15 hover:border-white/30 hover:bg-white/5 transition-colors"
                 whileTap={{ scale: 0.98 }}
                 onClick={onVerProjeto}
               >
                 <CornerBrackets />
                 {t('hero.ctaSecondary')}
-              </motion.button>
-            </motion.div>
+              </m.button>
+            </m.div>
           </div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   )
 }
 
 export function HeroSection({
   onVerProjeto,
-  onSlideChange,
 }: {
   onVerProjeto: (category: string) => void
-  onSlideChange?: (index: number) => void
 }) {
   const { t, locale } = useTranslation()
+  const { setActiveColor } = useActiveColor()
   const HERO_STATS = [
     { value: t('hero.stats.projectsValue'), label: t('hero.stats.projectsLabel') },
     { value: t('hero.stats.techValue'), label: t('hero.stats.techLabel') },
@@ -172,7 +183,33 @@ export function HeroSection({
   const [a11yMode, setA11yMode] = useState(false)
   const [isLumenAIOpen, setIsLumenAIOpen] = useState(false)
   const [hasInteracted, setHasInteracted] = useState(false)
+  const [prefetchInactive, setPrefetchInactive] = useState(false)
   useEffect(() => { setMounted(true) }, [])
+
+  // Pré-carrega as imagens dos slides inativos só depois do load + idle,
+  // para não competir com o LCP (substitui os <link rel="prefetch"> do layout).
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    let cancelled = false
+    let idleId: number | undefined
+    const start = () => { if (!cancelled) setPrefetchInactive(true) }
+    const hasIdleCallback = typeof window.requestIdleCallback === 'function'
+    const schedule = () => {
+      if (cancelled) return
+      if (hasIdleCallback) idleId = window.requestIdleCallback(start, { timeout: 5000 })
+      else idleId = window.setTimeout(start, 3000)
+    }
+    if (document.readyState === 'complete') schedule()
+    else window.addEventListener('load', schedule, { once: true })
+    return () => {
+      cancelled = true
+      window.removeEventListener('load', schedule)
+      if (idleId !== undefined) {
+        if (hasIdleCallback) window.cancelIdleCallback(idleId)
+        else window.clearTimeout(idleId)
+      }
+    }
+  }, [])
   useEffect(() => {
     if (typeof window === 'undefined') return
     const raf = window.requestAnimationFrame(() => setHasInteracted(true))
@@ -218,8 +255,8 @@ export function HeroSection({
   }, [scrollY])
 
   useEffect(() => {
-    onSlideChange?.(currentSlide)
-  }, [currentSlide, onSlideChange])
+    setActiveColor(projects[currentSlide]?.color ?? '#f97316')
+  }, [currentSlide, setActiveColor])
 
   useEffect(() => {
     if (isCarouselPaused || a11yMode || isLumenAIOpen) return
@@ -253,9 +290,13 @@ export function HeroSection({
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <motion.div aria-hidden="true" className="absolute inset-0" style={{ scale: heroScale }}>
+      {/* h1 único e estático da home, com as palavras-chave dos serviços;
+          os títulos visíveis dos slides do carrossel são <p> */}
+      <h1 className="sr-only">{t('hero.seoTitle')}</h1>
+
+      <m.div aria-hidden="true" className="absolute inset-0" style={{ scale: heroScale }}>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/75 via-[#0a0a0a]/55 to-[#0a0a0a]" />
-      </motion.div>
+      </m.div>
 
       <div
         className="relative h-full z-0"
@@ -269,7 +310,19 @@ export function HeroSection({
         </AnimatePresence>
       </div>
 
-      <motion.div aria-hidden="true" className="absolute inset-0 bg-[#0a0a0a] pointer-events-none z-10" style={{ opacity: carouselDarkenSmooth }} />
+      {prefetchInactive && (
+        <div aria-hidden="true" className="absolute bottom-0 left-0 w-px h-px opacity-0 pointer-events-none" tabIndex={-1}>
+          {projects.map((project, index) =>
+            index !== currentSlide && project.image && project.image !== '/' ? (
+              <div key={project.id} className="relative w-px h-px">
+                <Image src={project.image} alt="" fill sizes="100vw" loading="eager" />
+              </div>
+            ) : null,
+          )}
+        </div>
+      )}
+
+      <m.div aria-hidden="true" className="absolute inset-0 bg-[#0a0a0a] pointer-events-none z-10" style={{ opacity: carouselDarkenSmooth }} />
 
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {t('hero.carousel.slide')} {currentSlide + 1} {t('hero.carousel.slideOf')} {projects.length}: {projects[currentSlide] ? tField(projects[currentSlide], 'title', locale) : ''}
@@ -277,14 +330,14 @@ export function HeroSection({
       </section>
 
       {mounted && createPortal(
-        <motion.div
+        <m.div
           className="fixed inset-x-0 bottom-0 z-[45]"
           style={{ opacity: overlayOpacity, pointerEvents: overlayPointer }}
           aria-hidden={false}
         >
           <div data-a11y-filter="true" className="relative w-full h-full">
           <div className="hidden lg:block absolute bottom-28 right-6 lg:right-12">
-            <motion.div
+            <m.div
               key={currentSlide}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -307,7 +360,7 @@ export function HeroSection({
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           <div className="absolute bottom-6 sm:bottom-8 left-0 right-0">
@@ -351,8 +404,10 @@ export function HeroSection({
                   <span aria-hidden="true" className="text-white/30">/</span>
                   <span aria-hidden="true" className="text-white/50">{String(projects.length).padStart(2, '0')}</span>
                 </div>
-                <div className="hidden sm:flex items-center gap-2">
-                  <motion.button
+                {/* mr-16 (rem) reserva o canto para o widget de acessibilidade
+                    (right-5 + w-14 ≈ 4.75rem) e escala junto com o zoom de texto */}
+                <div className="hidden sm:flex items-center gap-2 mr-16">
+                  <m.button
                     type="button"
                     className="w-9 h-9 sm:w-11 sm:h-11 border border-white/15 bg-black/40 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
                     onClick={() => setIsCarouselPaused((p) => !p)}
@@ -360,8 +415,8 @@ export function HeroSection({
                     aria-label={isCarouselPaused ? t('hero.carousel.play') : t('hero.carousel.pause')}
                   >
                     {isCarouselPaused ? <Play aria-hidden="true" className="w-4 h-4" /> : <Pause aria-hidden="true" className="w-4 h-4" />}
-                  </motion.button>
-                  <motion.button
+                  </m.button>
+                  <m.button
                     type="button"
                     className="w-9 h-9 sm:w-11 sm:h-11 border border-white/15 bg-black/40 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
                     onClick={prevSlide}
@@ -369,8 +424,8 @@ export function HeroSection({
                     aria-label={t('hero.carousel.previous')}
                   >
                     <ChevronLeft aria-hidden="true" className="w-4 h-4" />
-                  </motion.button>
-                  <motion.button
+                  </m.button>
+                  <m.button
                     type="button"
                     className="w-9 h-9 sm:w-11 sm:h-11 border border-white/15 bg-black/40 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
                     onClick={nextSlide}
@@ -378,13 +433,13 @@ export function HeroSection({
                     aria-label={t('hero.carousel.next')}
                   >
                     <ChevronRight aria-hidden="true" className="w-4 h-4" />
-                  </motion.button>
+                  </m.button>
                 </div>
               </div>
             </div>
           </div>
           </div>
-        </motion.div>,
+        </m.div>,
         document.body,
       )}
     </>

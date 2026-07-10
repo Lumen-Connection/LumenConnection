@@ -3,9 +3,42 @@
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { CONTACT, buildMailtoUrl, buildWhatsAppUrl } from '@/lib/contact'
 import { useTranslation } from '@/lib/i18n/LocaleContext'
+import { SERVICE_LINKS, homePath, servicePath } from '@/data/service-links'
+
+const SOCIAL_LINKS = [
+  {
+    href: 'https://www.instagram.com/lumenconnection/',
+    ariaKey: 'footer.instagramAria',
+    icon: (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5"
+        aria-hidden="true"
+      >
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+      </svg>
+    ),
+  },
+  {
+    href: 'https://x.com/LumenConnection',
+    ariaKey: 'footer.twitterAria',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    ),
+  },
+] as const
 
 export function Footer() {
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
   return (
     <footer role="contentinfo" className="py-10 sm:py-12 md:py-14 border-t border-white/10 bg-black">
       <div className="container mx-auto px-5 sm:px-6">
@@ -26,8 +59,38 @@ export function Footer() {
             <p className="text-white/90 text-sm leading-relaxed max-w-sm">
               {t('footer.tagline')}
             </p>
+            <div className="flex items-center gap-4 mt-5">
+              {SOCIAL_LINKS.map(({ href, ariaKey, icon }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={t(ariaKey)}
+                  className="text-white/70 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
           </div>
-          <div className="hidden md:block" />
+          <nav aria-label={t('footer.services')}>
+            <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-white/90 mb-5">
+              {t('footer.services')}
+            </p>
+            <ul className="space-y-3 text-white/90 text-sm">
+              {SERVICE_LINKS.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={servicePath(locale, link)}
+                    className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+                  >
+                    {locale === 'en' ? link.labelEn : link.labelPt}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <div>
             <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-white/90 mb-5">
               {t('footer.contact')}
@@ -61,7 +124,7 @@ export function Footer() {
         <div className="mt-10 sm:mt-12 md:mt-14 pt-6 sm:pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           <p className="text-white/90 text-xs tracking-wider">{t('footer.copyright')}</p>
           <a
-            href="#contact"
+            href={`${homePath(locale)}#contact`}
             className="relative inline-flex items-center px-4 py-2 text-[10px] font-medium tracking-[0.25em] uppercase text-white/70 border border-white/10 hover:border-white/30 hover:text-white transition-colors"
           >
             <CornerBrackets color="rgba(255,255,255,0.4)" />

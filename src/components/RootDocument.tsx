@@ -1,6 +1,7 @@
 import '@/app/globals.css'
 import { Toaster } from '@/components/ui/toaster'
 import { PWAInstaller } from '@/components/PWAInstaller'
+import { CookieConsent } from '@/components/CookieConsent'
 import { LocaleProvider } from '@/lib/i18n/LocaleContext'
 import { MotionProvider } from '@/components/MotionProvider'
 import { geistSans } from '@/lib/fonts'
@@ -58,6 +59,7 @@ export function RootDocument({
             {children}
             <Toaster />
             <PWAInstaller />
+            <CookieConsent />
           </MotionProvider>
         </LocaleProvider>
       </body>

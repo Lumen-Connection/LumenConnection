@@ -253,7 +253,32 @@ export const translations = {
 
     // SEO
     'hero.seoTitle':
-      'Lumen Connection: desenvolvimento web, criação de sites, aplicativos, edição de vídeos, design gráfico, modelagem 3D e VFX em João Pessoa',
+      'Lumen Connection: desenvolvimento web, web design, criação de sites, aplicativos, ajuda com IA, edição de vídeos, design gráfico, modelagem 3D e VFX em João Pessoa',
+
+    // Projetos chegando
+    'upcoming.title': 'Projetos Chegando',
+    'upcoming.toggleAria': 'Mostrar ou ocultar os projetos chegando',
+    'upcoming.all': 'Todos os projetos',
+    'upcoming.tbd': 'Em breve',
+
+    // Cookies
+    'cookie.regionAria': 'Aviso de cookies',
+    'cookie.text':
+      'Ao clicar em "Aceitar todos os cookies", você autoriza o armazenamento de cookies no seu dispositivo para melhorar a navegação e lembrar suas preferências, como idioma e acessibilidade. Saiba mais na nossa',
+    'cookie.policyLink': 'Política de Cookies',
+    'cookie.settings': 'Configurações de Cookies',
+    'cookie.rejectAll': 'Rejeitar Todos',
+    'cookie.acceptAll': 'Aceitar Todos os Cookies',
+    'cookie.closeAria': 'Fechar aviso de cookies',
+    'cookie.essentialTitle': 'Essenciais',
+    'cookie.essentialDesc':
+      'Necessários para o site funcionar: preferência de idioma, ajustes de acessibilidade e este próprio consentimento. Não guardam dados pessoais.',
+    'cookie.alwaysOn': 'Sempre ativos',
+    'cookie.analyticsTitle': 'Análise e melhorias',
+    'cookie.analyticsDesc':
+      'Métricas anônimas de uso para melhorar o site. Hoje não usamos nenhuma; se um dia usarmos, sua escolha aqui será respeitada.',
+    'cookie.save': 'Salvar preferências',
+    'footer.cookiePolicy': 'Política de Cookies',
 
     // Language switcher
     'lang.label': 'Idioma',
@@ -564,7 +589,32 @@ export const translations = {
 
     // SEO
     'hero.seoTitle':
-      'Lumen Connection: web development, websites, apps, video editing, graphic design, 3D modeling and VFX studio in João Pessoa, Brazil',
+      'Lumen Connection: web development, web design, websites, apps, AI help, video editing, graphic design, 3D modeling and VFX studio in João Pessoa, Brazil',
+
+    // Upcoming projects
+    'upcoming.title': 'Upcoming Projects',
+    'upcoming.toggleAria': 'Show or hide upcoming projects',
+    'upcoming.all': 'All projects',
+    'upcoming.tbd': 'Coming soon',
+
+    // Cookies
+    'cookie.regionAria': 'Cookie notice',
+    'cookie.text':
+      'By clicking "Accept All Cookies", you agree to the storing of cookies on your device to improve navigation and remember your preferences, such as language and accessibility. Learn more in our',
+    'cookie.policyLink': 'Cookie Policy',
+    'cookie.settings': 'Cookies Settings',
+    'cookie.rejectAll': 'Reject All',
+    'cookie.acceptAll': 'Accept All Cookies',
+    'cookie.closeAria': 'Close cookie notice',
+    'cookie.essentialTitle': 'Essential',
+    'cookie.essentialDesc':
+      'Required for the site to work: language preference, accessibility settings and this consent itself. They store no personal data.',
+    'cookie.alwaysOn': 'Always on',
+    'cookie.analyticsTitle': 'Analytics & improvements',
+    'cookie.analyticsDesc':
+      'Anonymous usage metrics to improve the site. We use none today; if we ever do, your choice here will be respected.',
+    'cookie.save': 'Save preferences',
+    'footer.cookiePolicy': 'Cookie Policy',
 
     // Language switcher
     'lang.label': 'Language',

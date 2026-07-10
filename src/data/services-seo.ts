@@ -50,6 +50,8 @@ export const SERVICES_SEO: ServiceSeo[] = [
         'Criação de sites profissionais e sistemas web sob medida com Next.js e React. Faça seu site com quem une engenharia de software e design. Orçamento grátis.',
       keywords: [
         'desenvolvimento web',
+        'web design',
+        'webdesign',
         'criação de sites',
         'fazer site',
         'faça seu site',
@@ -57,12 +59,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
         'site profissional',
         'criação de site para empresa',
         'desenvolvimento de sites João Pessoa',
+        'ajuda com IA',
+        'site com inteligência artificial',
         'Next.js',
         'React',
       ],
       h1: 'Desenvolvimento Web e Criação de Sites Profissionais',
       intro: [
-        'Quer desenvolver o site da sua empresa, lançar uma loja virtual ou tirar um sistema web do papel? A Lumen Connection projeta e desenvolve sites profissionais completos: layout, código, hospedagem e SEO ficam com a gente.',
+        'Quer desenvolver o site da sua empresa, lançar uma loja virtual ou tirar um sistema web do papel? A Lumen Connection projeta e desenvolve sites profissionais completos: web design, código, hospedagem e SEO ficam com a gente.',
         'Trabalhamos com Next.js, React, TypeScript e Tailwind CSS para entregar sites rápidos, seguros e prontos para aparecer no Google. Cada projeto é construído sob medida, sem templates genéricos.',
       ],
       sections: [
@@ -102,6 +106,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
           q: 'Vocês fazem manutenção depois da entrega?',
           a: 'Sim. Oferecemos planos de manutenção, atualização de conteúdo e evolução contínua para o seu site continuar rápido, seguro e atualizado.',
         },
+        {
+          q: 'Vocês cuidam do web design ou só da programação?',
+          a: 'Dos dois. O web design (layout, cores, tipografia e experiência de navegação) e o código são feitos pelo mesmo time, então o visual aprovado é exatamente o que vai ao ar.',
+        },
+        {
+          q: 'Consigo ajuda com IA no meu site?',
+          a: 'Sim. Integramos inteligência artificial a sites e sistemas, como assistentes virtuais e chatbots de atendimento. O Lumen AI, assistente do nosso próprio site, é um exemplo funcionando na prática.',
+        },
       ],
       ctaTitle: 'Faça seu site com a Lumen Connection',
       ctaLabel: 'Pedir orçamento no WhatsApp',
@@ -113,16 +125,19 @@ export const SERVICES_SEO: ServiceSeo[] = [
         'Custom websites and web systems built with Next.js and React. Get a fast, responsive, SEO-ready site from a studio that blends engineering and design.',
       keywords: [
         'web development',
+        'web design',
         'website creation',
         'build a website',
         'professional website',
         'custom web development',
+        'AI help',
+        'AI integration',
         'Next.js',
         'React',
       ],
       h1: 'Web Development & Professional Website Creation',
       intro: [
-        'Need a website for your business, an online store or a full web system? Lumen Connection designs and builds complete professional websites: layout, code, hosting and SEO, all handled by one team.',
+        'Need a website for your business, an online store or a full web system? Lumen Connection designs and builds complete professional websites: web design, code, hosting and SEO, all handled by one team.',
         'We work with Next.js, React, TypeScript and Tailwind CSS to deliver fast, secure websites that are ready to rank on Google. Every project is custom-built, without generic templates.',
       ],
       sections: [
@@ -158,6 +173,14 @@ export const SERVICES_SEO: ServiceSeo[] = [
           q: 'Does the website work well on mobile?',
           a: 'Yes. Every project is responsive by default and tested on phones, tablets and desktops.',
         },
+        {
+          q: 'Do you handle the web design or just the code?',
+          a: 'Both. Web design (layout, colors, typography and navigation) and code are done by the same team, so the approved visual is exactly what goes live.',
+        },
+        {
+          q: 'Can I get AI features on my website?',
+          a: 'Yes. We integrate artificial intelligence into websites and systems, such as virtual assistants and support chatbots. Lumen AI, the assistant on our own site, is a working example.',
+        },
       ],
       ctaTitle: 'Build your website with Lumen Connection',
       ctaLabel: 'Get a quote on WhatsApp',
@@ -181,6 +204,9 @@ export const SERVICES_SEO: ServiceSeo[] = [
         'programa para Windows',
         'desenvolvimento em Rust',
         'desenvolvimento em C++',
+        'ajuda com IA',
+        'integração de inteligência artificial',
+        'automação com IA',
       ],
       h1: 'Desenvolvimento de Software Sob Medida',
       intro: [
@@ -214,6 +240,10 @@ export const SERVICES_SEO: ServiceSeo[] = [
           q: 'Como recebo o software e as atualizações?',
           a: 'Entregamos instalador, código-fonte (quando contratado) e um canal de atualizações. Também oferecemos manutenção evolutiva contínua.',
         },
+        {
+          q: 'Vocês oferecem ajuda com IA?',
+          a: 'Sim. Conectamos modelos de inteligência artificial a programas e fluxos de trabalho, do chatbot interno à automação de tarefas repetitivas. O Lumen Chat, nosso cliente de IA escrito em Rust, nasceu dessa especialidade.',
+        },
       ],
       ctaTitle: 'Precisa de um software sob medida?',
       ctaLabel: 'Falar com um desenvolvedor',
@@ -230,6 +260,9 @@ export const SERVICES_SEO: ServiceSeo[] = [
         'Windows app development',
         'Rust development',
         'C++ development',
+        'AI help',
+        'AI integration',
+        'AI automation',
       ],
       h1: 'Custom Software Development',
       intro: [
@@ -262,6 +295,10 @@ export const SERVICES_SEO: ServiceSeo[] = [
         {
           q: 'How do I receive the software and updates?',
           a: 'We deliver an installer, source code (when contracted) and an update channel, plus ongoing maintenance if you want it.',
+        },
+        {
+          q: 'Do you offer help with AI?',
+          a: 'Yes. We connect artificial intelligence models to programs and workflows, from internal chatbots to automating repetitive tasks. Lumen Chat, our AI client written in Rust, grew out of this specialty.',
         },
       ],
       ctaTitle: 'Need custom software?',
@@ -497,6 +534,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
       keywords: [
         'design',
         'design gráfico',
+        'web design',
         'identidade visual',
         'criação de logo',
         'branding',
@@ -546,6 +584,7 @@ export const SERVICES_SEO: ServiceSeo[] = [
         'Professional graphic design: logo creation, visual identity, branding, banners, posters and social media assets. Design that elevates your brand.',
       keywords: [
         'graphic design',
+        'web design',
         'visual identity',
         'logo design',
         'branding',

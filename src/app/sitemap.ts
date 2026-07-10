@@ -54,5 +54,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     )
   }
 
+  const cookiePt = `${SITE.url}/politica-de-cookies`
+  const cookieEn = `${SITE.url}/en/cookie-policy`
+  const cookieLanguages = {
+    'pt-BR': cookiePt,
+    'en-US': cookieEn,
+    'x-default': cookiePt,
+  }
+  entries.push(
+    {
+      url: cookiePt,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+      alternates: { languages: cookieLanguages },
+    },
+    {
+      url: cookieEn,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+      alternates: { languages: cookieLanguages },
+    },
+  )
+
   return entries
 }

@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import { navItems } from '@/app/portfolioData'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import { UpcomingProjects } from '@/components/UpcomingProjects'
 
 const LumenAIModal = dynamic(
   () => import('@/components/LumenAIModal').then((mod) => mod.LumenAIModal),
@@ -48,10 +49,11 @@ export function Header() {
   const headerOpacity = useTransform(scrollY, [0, 700], [1, 0])
   const headerY = useTransform(scrollY, [0, 700], [0, -120])
 
-  // @container + variantes @6xl (72rem): como rem escala com o zoom de texto
+  // @container + variantes @min-[90rem]: como rem escala com o zoom de texto
   // do widget de acessibilidade, o header colapsa para o menu hambúrguer quando
   // o conteúdo deixa de caber — coisa que breakpoints md: (px de viewport) não
-  // detectam.
+  // detectam. (90rem em vez de @7xl/80rem: com o "Projetos Chegando" o conteúdo
+  // completo precisa de ~87rem; abaixo disso os blocos se sobrepunham.)
   return (
     <m.header role="banner" className="@container fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: headerBackground, opacity: headerOpacity, y: headerY }}>
       <div className="container mx-auto px-5 sm:px-6 py-4 sm:py-5">
@@ -76,7 +78,7 @@ export function Header() {
             />
           </m.a>
 
-          <nav aria-label={t('nav.mainLabel')} className="hidden @6xl:flex items-center gap-7">
+          <nav aria-label={t('nav.mainLabel')} className="hidden @min-[90rem]:flex items-center gap-6">
             {navItems.map((item, i) => (
               <m.a
                 key={item.href}
@@ -109,8 +111,8 @@ export function Header() {
             </m.button>
           </nav>
 
-          <div className="hidden @6xl:flex items-center gap-3">
-            <LanguageSwitcher />
+          <div className="hidden @min-[90rem]:flex items-center gap-3">
+            <UpcomingProjects /> {/*Não esquecer de melhorar mais isso aki*/}
             <m.a
               href="#contact"
               className="relative inline-flex items-center whitespace-nowrap px-5 py-2.5 text-xs font-medium tracking-[0.15em] uppercase text-white/90 border border-white/15 hover:border-white/40 hover:bg-white/5 transition-colors"
@@ -121,9 +123,10 @@ export function Header() {
               <CornerBrackets />
               {t('nav.contactCta')}
             </m.a>
+            <LanguageSwitcher variant="compact" />
           </div>
 
-          <div className="@6xl:hidden flex items-center gap-3 sm:gap-4">
+          <div className="@min-[90rem]:hidden flex items-center gap-3 sm:gap-4">
             <LanguageSwitcher />
             <span aria-hidden="true" className="w-px h-5 bg-white/15" />
             <button
@@ -144,7 +147,7 @@ export function Header() {
         {isMenuOpen && (
           <m.div
             id="mobile-nav"
-            className="@6xl:hidden absolute top-full left-0 right-0 bg-[#0a0a0a] border-t border-white/10"
+            className="@min-[90rem]:hidden absolute top-full left-0 right-0 bg-[#0a0a0a] border-t border-white/10"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -178,6 +181,7 @@ export function Header() {
                 <CornerBrackets />
                 {t('nav.contactCta')}
               </a>
+              <UpcomingProjects variant="inline" />
             </nav>
           </m.div>
         )}

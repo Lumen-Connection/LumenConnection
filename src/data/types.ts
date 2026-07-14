@@ -1,5 +1,17 @@
 import type { LucideIcon } from 'lucide-react'
 
+/** Etapa de uma linha do tempo (ex.: evolução de uma marca/logo). */
+export type TimelineStep = {
+  /** Rótulo da etapa exibido no marcador (ex.: '1', '1.1', '2', '3'). */
+  step: string
+  title: string
+  title_en?: string
+  description: string
+  description_en?: string
+  /** Uma ou mais imagens que ilustram a etapa. */
+  images: string[]
+}
+
 export type ProjectItem = {
   id: number
   title: string
@@ -7,12 +19,19 @@ export type ProjectItem = {
   description: string
   description_en?: string
   image: string
+  /**
+   * Ajuste da mídia de capa: 'cover' (padrão) recorta para preencher;
+   * 'contain' mostra a imagem inteira sem cortes (ideal para logos).
+   */
+  imageFit?: 'cover' | 'contain'
   /** Poster exibido enquanto o vídeo (quando image é vídeo) não é carregado. */
   poster?: string
   url?: string
   downloadUrl?: string
   desktopOnly?: boolean
   gallery?: string[]
+  /** Quando presente, o card abre uma linha do tempo cronológica em vez da galeria. */
+  timeline?: TimelineStep[]
   subcategory?: string
   subcategory_en?: string
 }

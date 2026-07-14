@@ -8,7 +8,7 @@ import {
   Sparkles,
   Zap,
 } from 'lucide-react'
-import type { Project, ProjectItem } from './types'
+import type { Project, ProjectItem, TimelineStep } from './types'
 
 const STATS_PT = 'Projetos concluídos'
 const STATS_EN = 'Projects completed'
@@ -291,6 +291,69 @@ export const projects: Project[] = [
         subcategory: 'Branding',
         subcategory_en: 'Branding',
       },
+      {
+        id: 6,
+        title: 'Lumen Stream — Evolução da Marca',
+        title_en: 'Lumen Stream — Brand Evolution',
+        description:
+          'A identidade visual do Lumen Stream em ordem cronológica: do conceito inicial como "Lumen Downloader" até a logo oficial refinada.',
+        description_en:
+          'The visual identity of Lumen Stream in chronological order: from its initial concept as "Lumen Downloader" to the refined official logo.',
+        image: '/images/projects/branding/lumen-stream/lumen-stream-final.png',
+        imageFit: 'contain',
+        subcategory: 'Branding',
+        subcategory_en: 'Branding',
+        timeline: [
+          {
+            step: '1',
+            title: 'Conceito inicial — Lumen Downloader',
+            title_en: 'Initial concept — Lumen Downloader',
+            description:
+              'O projeto nasceu com o nome Lumen Downloader. Esse primeiro conceito girava em torno da ideia de baixar mídia: um losango abrigando uma seta de download em azul-ciano, ao lado do logotipo. Foi o ponto de partida que definiu o símbolo em losango e a linguagem visual da identidade.',
+            description_en:
+              'The project was born under the name Lumen Downloader. This first concept revolved around downloading media: a diamond holding a cyan download arrow, next to the wordmark. It was the starting point that established the diamond symbol and the visual language of the identity.',
+            images: ['/images/projects/branding/lumen-stream/lumen-downloader-full.png'],
+          },
+          {
+            step: '1.1',
+            title: 'Detalhes da logo Lumen Downloader',
+            title_en: 'Lumen Downloader logo details',
+            description:
+              'Variações e aplicações da marca Lumen Downloader: o logotipo isolado, o símbolo em losango sozinho e versões em alta resolução para fundos claros e escuros. Esses estudos refinaram proporção, contraste e legibilidade do conjunto.',
+            description_en:
+              'Variations and applications of the Lumen Downloader brand: the isolated wordmark, the diamond symbol on its own, and high-resolution versions for light and dark backgrounds. These studies refined the proportion, contrast and legibility of the set.',
+            images: [
+              '/images/projects/branding/lumen-stream/lumen-downloader-wordmark.png',
+              '/images/projects/branding/lumen-stream/lumen-downloader-icon.png',
+              '/images/projects/branding/lumen-stream/lumen-downloader-full.jpg',
+              '/images/projects/branding/lumen-stream/lumen-downloader-icon.jpg',
+            ],
+          },
+          {
+            step: '2',
+            title: 'Rebranding para Lumen Stream',
+            title_en: 'Rebranding to Lumen Stream',
+            description:
+              'Com a decisão de reposicionar o produto, o nome mudou para Lumen Stream e a marca foi reformulada. Partindo de um mockup inicial monocromático do símbolo, a seta de download deu lugar a um botão de play dentro de uma engrenagem e a paleta migrou do azul para o laranja da Lumen Connection, mantendo o losango como fio condutor.',
+            description_en:
+              'As the product was repositioned, the name changed to Lumen Stream and the brand was reworked. Starting from an initial monochrome mockup of the symbol, the download arrow gave way to a play button inside a gear and the palette moved from blue to the Lumen Connection orange, keeping the diamond as the common thread.',
+            images: [
+              '/images/projects/branding/lumen-stream/lumen-stream-rebrand-mockup.png',
+              '/images/projects/branding/lumen-stream/lumen-stream-rebrand.png',
+            ],
+          },
+          {
+            step: '3',
+            title: 'Refinamento final',
+            title_en: 'Final refinement',
+            description:
+              'A versão final simplificou o símbolo: as setas de rotação foram removidas, deixando a engrenagem com o play centralizada no losango. O resultado é a logo oficial da Lumen Stream — mais limpa, equilibrada e pronta para aplicação em qualquer contexto digital.',
+            description_en:
+              'The final version simplified the symbol: the rotating arrows were removed, leaving the gear-and-play centered inside the diamond. The result is the official Lumen Stream logo — cleaner, balanced and ready for any digital context.',
+            images: ['/images/projects/branding/lumen-stream/lumen-stream-final.png'],
+          },
+        ],
+      },
     ],
   },
   {
@@ -418,4 +481,4 @@ export const projects: Project[] = [
 export const heroProjects: Project[] = projects.filter((p) => p.showInHero !== false)
 export const sectionProjects: Project[] = projects.filter((p) => !p.heroOnly)
 
-export type { Project, ProjectItem }
+export type { Project, ProjectItem, TimelineStep }

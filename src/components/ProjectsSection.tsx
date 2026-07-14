@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, useCallback, memo } from 'react'
 import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import { m, AnimatePresence, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
-import { ArrowRight, ArrowLeft, ExternalLink, Download, Code2, Images, ZoomIn } from 'lucide-react'
+import { ArrowRight, ArrowLeft, ExternalLink, Download, Code2, Images, ZoomIn, History } from 'lucide-react'
 import { categories, categoryTranslationKey, sectionProjects as projects, ProjectItem } from '@/app/portfolioData'
 import { CornerBrackets, SectionLabel } from '@/components/ui/corner-brackets'
 import dynamic from 'next/dynamic'
@@ -16,6 +16,10 @@ const DesktopOnlyModal = dynamic(
 )
 const GalleryModal = dynamic(
   () => import('@/components/GalleryModal').then((mod) => mod.GalleryModal),
+  { ssr: false },
+)
+const TimelineModal = dynamic(
+  () => import('@/components/TimelineModal').then((mod) => mod.TimelineModal),
   { ssr: false },
 )
 import { useTranslation } from '@/lib/i18n/LocaleContext'
@@ -107,10 +111,19 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
   const itemDescription = tField(item, 'description', locale)
   const itemHasMedia = hasMedia(item.image)
   const isVideo = isVideoSource(item.image)
+  const isContain = item.imageFit === 'contain'
   const [showDesktopWarn, setShowDesktopWarn] = useState(false)
   const [showGallery, setShowGallery] = useState(false)
+  const [showTimeline, setShowTimeline] = useState(false)
 
   const hasGallery = !!(item.gallery && item.gallery.length > 0)
+  const hasTimeline = !!(item.timeline && item.timeline.length > 0)
+  const interactive = hasGallery || hasTimeline
+
+  const openOverlay = () => {
+    if (hasTimeline) setShowTimeline(true)
+    else if (hasGallery) setShowGallery(true)
+  }
 
   const handleDownloadClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (item.desktopOnly && isMobileDevice()) {
@@ -120,34 +133,40 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
   }
 
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!hasGallery) return
+    if (!interactive) return
     const target = e.target as HTMLElement
     if (target.closest('a, button')) return
-    setShowGallery(true)
+    openOverlay()
   }
 
   const handleCardKey = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (!hasGallery) return
+    if (!interactive) return
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
-      setShowGallery(true)
+      openOverlay()
     }
   }
 
   return (
     <>
     <m.div
-      className={`relative overflow-hidden group h-[240px] sm:h-[260px] md:h-[280px] w-full border border-white/10 hover:border-white/25 transition-colors ${hasGallery ? 'cursor-pointer' : ''}`}
+      className={`relative overflow-hidden group h-[240px] sm:h-[260px] md:h-[280px] w-full border border-white/10 hover:border-white/25 transition-colors ${interactive ? 'cursor-pointer' : ''}`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       onClick={handleCardClick}
       onKeyDown={handleCardKey}
-      role={hasGallery ? 'button' : undefined}
-      tabIndex={hasGallery ? 0 : undefined}
-      aria-haspopup={hasGallery ? 'dialog' : undefined}
-      aria-label={hasGallery ? `Abrir galeria de ${itemTitle}` : undefined}
+      role={interactive ? 'button' : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      aria-haspopup={interactive ? 'dialog' : undefined}
+      aria-label={
+        hasTimeline
+          ? `${t('item.openTimelineAria')} ${itemTitle}`
+          : hasGallery
+            ? `${t('item.openGalleryAria')} ${itemTitle}`
+            : undefined
+      }
     >
       {itemHasMedia && (
         isVideo ? (
@@ -163,7 +182,9 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
             alt={itemTitle}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className={`transition-transform duration-500 ${
+              isContain ? 'object-contain p-6 group-hover:scale-[1.02]' : 'object-cover group-hover:scale-105'
+            }`}
           />
         )
       )}
@@ -208,6 +229,18 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
           >
             {t('item.viewProject')} <ExternalLink aria-hidden="true" className="w-3 h-3" />
           </a>
+        ) : hasTimeline ? (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setShowTimeline(true) }}
+            className="relative inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 max-w-full bg-orange-500 hover:bg-orange-400 text-black text-[9px] sm:text-[10px] font-semibold tracking-[0.12em] sm:tracking-[0.18em] uppercase whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+            aria-haspopup="dialog"
+            aria-label={`${t('item.openTimelineAria')} ${itemTitle}`}
+          >
+            <History aria-hidden="true" className="w-3.5 h-3.5 shrink-0" />
+            <span className="sm:hidden">{t('item.viewTimelineShort')}</span>
+            <span className="hidden sm:inline">{t('item.viewTimeline')} · {item.timeline!.length}</span>
+          </button>
         ) : hasGallery ? (
           item.gallery!.length === 1 ? (
             <button
@@ -245,6 +278,14 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
         title={itemTitle}
         description={itemDescription}
         onClose={() => setShowGallery(false)}
+      />
+    )}
+    {showTimeline && hasTimeline && (
+      <TimelineModal
+        steps={item.timeline!}
+        title={itemTitle}
+        description={itemDescription}
+        onClose={() => setShowTimeline(false)}
       />
     )}
     </>

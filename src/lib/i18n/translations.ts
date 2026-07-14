@@ -30,7 +30,7 @@ export const translations = {
     // Hero
     'hero.ctaPrimaryDefault': 'Inicie um Projeto',
     'hero.ctaSecondary': 'Veja Nossos Trabalhos',
-    'hero.stats.projectsValue': '+10',
+    'hero.stats.projectsValue': '+15',
     'hero.stats.projectsLabel': 'Projetos\nEntregues',
     'hero.stats.techValue': '+20',
     'hero.stats.techLabel': 'Tecnologias\nDominadas',
@@ -88,6 +88,9 @@ export const translations = {
     'item.viewGalleryShort': 'Galeria',
     'item.viewGalleryLong': 'Ver Galeria',
     'item.pages': 'Páginas',
+    'item.viewTimeline': 'Linha do tempo',
+    'item.viewTimelineShort': 'Timeline',
+    'item.openTimelineAria': 'Abrir linha do tempo de',
     'item.learnMore': 'Saiba mais',
     'item.learnMoreAria': 'Saiba mais sobre',
     'item.viewAria': 'Ver projeto',
@@ -202,6 +205,10 @@ export const translations = {
     'gallery.next': 'Próxima página',
     'gallery.selectPage': 'Selecionar página',
     'gallery.goToPage': 'Ir para página',
+    'timeline.subtitle': 'Linha do tempo da marca',
+    'timeline.step': 'Etapa',
+    'timeline.close': 'Fechar linha do tempo',
+    'timeline.enlarge': 'Ampliar imagem',
 
     // PWA install
     'pwa.title': 'Adicione à tela inicial',
@@ -366,7 +373,7 @@ export const translations = {
     // Hero
     'hero.ctaPrimaryDefault': 'Start a Project',
     'hero.ctaSecondary': 'See Our Work',
-    'hero.stats.projectsValue': '+10',
+    'hero.stats.projectsValue': '+15',
     'hero.stats.projectsLabel': 'Projects\nDelivered',
     'hero.stats.techValue': '+20',
     'hero.stats.techLabel': 'Technologies\nMastered',
@@ -424,6 +431,9 @@ export const translations = {
     'item.viewGalleryShort': 'Gallery',
     'item.viewGalleryLong': 'View Gallery',
     'item.pages': 'Pages',
+    'item.viewTimeline': 'Timeline',
+    'item.viewTimelineShort': 'Timeline',
+    'item.openTimelineAria': 'Open timeline of',
     'item.learnMore': 'Learn more',
     'item.learnMoreAria': 'Learn more about',
     'item.viewAria': 'View project',
@@ -538,6 +548,10 @@ export const translations = {
     'gallery.next': 'Next page',
     'gallery.selectPage': 'Select page',
     'gallery.goToPage': 'Go to page',
+    'timeline.subtitle': 'Brand timeline',
+    'timeline.step': 'Step',
+    'timeline.close': 'Close timeline',
+    'timeline.enlarge': 'Enlarge image',
 
     // PWA install
     'pwa.title': 'Add to home screen',

@@ -153,6 +153,7 @@ export function ServicePageContent({
                 const description = tField(item, 'description', locale)
                 const subcategory = tField(item, 'subcategory', locale)
                 const isVideo = item.image.endsWith('.webm')
+                const isContain = item.imageFit === 'contain'
                 return (
                   <div
                     key={`${service.id}-${item.id}-${item.title}`}
@@ -177,7 +178,11 @@ export function ServicePageContent({
                           alt={title}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                          className={`transition-transform duration-500 ${
+                            isContain
+                              ? 'object-contain p-6'
+                              : 'object-cover group-hover:scale-[1.03]'
+                          }`}
                         />
                       )}
                     </div>

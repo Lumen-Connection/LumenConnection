@@ -54,6 +54,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     )
   }
 
+  const upcomingPt = `${SITE.url}/novosprojetos`
+  const upcomingEn = `${SITE.url}/en/upcoming-projects`
+  const upcomingLanguages = {
+    'pt-BR': upcomingPt,
+    'en-US': upcomingEn,
+    'x-default': upcomingPt,
+  }
+  entries.push(
+    {
+      url: upcomingPt,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+      alternates: { languages: upcomingLanguages },
+    },
+    {
+      url: upcomingEn,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.5,
+      alternates: { languages: upcomingLanguages },
+    },
+  )
+
   const cookiePt = `${SITE.url}/politica-de-cookies`
   const cookieEn = `${SITE.url}/en/cookie-policy`
   const cookieLanguages = {

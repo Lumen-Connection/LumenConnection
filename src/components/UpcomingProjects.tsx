@@ -7,38 +7,16 @@ import { ChevronDown, LayoutGrid } from 'lucide-react'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { useTranslation } from '@/lib/i18n/LocaleContext'
 import { tField } from '@/lib/i18n/tField'
+import { upcomingProjectsPath } from '@/data/service-links'
 import { upcomingProjects, type UpcomingProject } from '@/data/upcoming-projects'
+import {
+  COUNTDOWN_WINDOW_MS,
+  formatCountdown,
+  formatLaunchDate,
+  getUpcomingProjects,
+  localTimezoneLabel,
+} from '@/lib/upcoming'
 import type { Locale } from '@/lib/i18n/translations'
-
-/** Abaixo desta janela o item mostra o cronômetro "T-"; acima, a data formatada. */
-const COUNTDOWN_WINDOW_MS = 7 * 24 * 60 * 60 * 1000
-
-function formatCountdown(msLeft: number): string {
-  const total = Math.max(0, Math.floor(msLeft / 1000))
-  const days = Math.floor(total / 86400)
-  const hours = Math.floor((total % 86400) / 3600)
-  const minutes = Math.floor((total % 3600) / 60)
-  const seconds = total % 60
-  const pad = (n: number) => String(n).padStart(2, '0')
-  const clock = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
-  return days > 0 ? `T-${days}d ${clock}` : `T-${clock}`
-}
-
-function localTimezoneLabel(locale: Locale): string {
-  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
-  const city = (tz.split('/').pop() ?? tz).replace(/_/g, ' ')
-  return locale === 'en' ? `${city} Time` : `Horário de ${city}`
-}
-
-function formatLaunchDate(launchAt: string, locale: Locale): string {
-  return new Intl.DateTimeFormat(locale === 'en' ? 'en-US' : 'pt-BR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  }).format(new Date(launchAt))
-}
 
 function LaunchInfo({
   project,
@@ -115,13 +93,7 @@ export function UpcomingProjects({
     }
   }, [open, variant])
 
-  const items = upcomingProjects
-    .filter((p) => !p.launchAt || Date.parse(p.launchAt) > now)
-    .sort((a, b) => {
-      if (!a.launchAt) return 1
-      if (!b.launchAt) return -1
-      return Date.parse(a.launchAt) - Date.parse(b.launchAt)
-    })
+  const items = getUpcomingProjects(upcomingProjects, now)
 
   if (items.length === 0) return null
 
@@ -139,7 +111,11 @@ export function UpcomingProjects({
                 alt=""
                 fill
                 sizes="56px"
-                className="object-cover"
+                className={
+                  project.imageFit === 'contain'
+                    ? 'object-contain p-1.5'
+                    : 'object-cover'
+                }
               />
             </div>
             <div className="min-w-0">
@@ -160,7 +136,7 @@ export function UpcomingProjects({
         ))}
       </ul>
       <a
-        href="#projects"
+        href={upcomingProjectsPath(locale)}
         onClick={() => setOpen(false)}
         className="flex items-center justify-center gap-2 px-4 py-3 text-[10px] font-medium tracking-[0.25em] uppercase text-white/65 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
       >

@@ -75,9 +75,14 @@ export function servicePath(locale: Locale, link: ServiceLink): string {
   return locale === 'en' ? `/en/services/${link.slugEn}` : `/servicos/${link.slugPt}`
 }
 
+export function upcomingProjectsPath(locale: Locale): string {
+  return locale === 'en' ? '/en/upcoming-projects' : '/novosprojetos'
+}
+
 /** Pares PT/EN de páginas avulsas (fora de /servicos). */
 const PAGE_PAIRS: { pt: string; en: string }[] = [
   { pt: '/politica-de-cookies', en: '/en/cookie-policy' },
+  { pt: '/novosprojetos', en: '/en/upcoming-projects' },
 ]
 
 /**

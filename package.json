@@ -7,7 +7,7 @@
     "build": "next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/",
     "start": "NODE_ENV=production bun .next/standalone/server.js 2>&1 | tee server.log",
     "lint": "eslint .",
-    "test": "node --experimental-strip-types --test --test-reporter=spec tests/lib/url.test.ts tests/lib/contact.test.ts tests/lib/media.test.ts tests/lib/site.test.ts tests/data/projects.test.ts",
+    "test": "node --experimental-strip-types --test --test-reporter=spec tests/lib/url.test.ts tests/lib/contact.test.ts tests/lib/media.test.ts tests/lib/site.test.ts tests/data/projects.test.ts tests/data/upcoming-projects.test.ts",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",

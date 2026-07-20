@@ -11,7 +11,9 @@ describe('upcoming projects data integrity', () => {
       assert.ok(p.id, `upcoming project ${p.title} missing id`)
       assert.ok(p.title, 'upcoming project missing title')
       assert.ok(p.category, 'upcoming project missing category')
-      assert.ok(p.image.startsWith('/'), `${p.title} image must be an absolute path`)
+      if (p.image !== undefined) {
+        assert.ok(p.image.startsWith('/'), `${p.title} image must be an absolute path`)
+      }
     }
   })
 
@@ -22,6 +24,7 @@ describe('upcoming projects data integrity', () => {
 
   test('every cover exists in public/', () => {
     for (const p of upcomingProjects) {
+      if (p.image === undefined) continue
       const file = new URL(`../../public${p.image}`, import.meta.url)
       assert.ok(existsSync(file), `missing cover for ${p.title}: ${p.image}`)
     }

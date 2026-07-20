@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-type AppKey = 'lumen-music' | 'lumen-chat'
+type AppKey = 'lumen-music' | 'lumen-chat' | 'lumen-stream'
 
 type AppConfig = {
   owner: string
@@ -23,6 +23,16 @@ const APPS: Record<AppKey, AppConfig> = {
     pickAsset: (names) =>
       names.find((n) => /setup.*\.exe$/i.test(n)) ??
       names.find((n) => /\.exe$/i.test(n)) ??
+      names.find((n) => /\.7z$/i.test(n)) ??
+      names.find((n) => /\.zip$/i.test(n)),
+  },
+  'lumen-stream': {
+    owner: 'Lumen-Connection',
+    repo: 'lumen-stream',
+    pickAsset: (names) =>
+      names.find((n) => /setup.*\.exe$/i.test(n)) ??
+      names.find((n) => /\.exe$/i.test(n)) ??
+      names.find((n) => /\.msi$/i.test(n)) ??
       names.find((n) => /\.7z$/i.test(n)) ??
       names.find((n) => /\.zip$/i.test(n)),
   },

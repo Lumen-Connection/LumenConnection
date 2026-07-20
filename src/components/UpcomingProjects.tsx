@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { m, AnimatePresence } from 'framer-motion'
 import { ChevronDown, LayoutGrid } from 'lucide-react'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
+import { CoverFallback } from '@/components/upcoming/CoverFallback'
 import { useTranslation } from '@/lib/i18n/LocaleContext'
 import { tField } from '@/lib/i18n/tField'
 import { upcomingProjectsPath } from '@/data/service-links'
@@ -106,17 +107,21 @@ export function UpcomingProjects({
             className="flex items-center gap-3.5 px-4 py-3.5 border-b border-white/10"
           >
             <div className="relative w-14 h-14 shrink-0 overflow-hidden rounded-sm bg-white/5">
-              <Image
-                src={project.image}
-                alt=""
-                fill
-                sizes="56px"
-                className={
-                  project.imageFit === 'contain'
-                    ? 'object-contain p-1.5'
-                    : 'object-cover'
-                }
-              />
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt=""
+                  fill
+                  sizes="56px"
+                  className={
+                    project.imageFit === 'contain'
+                      ? 'object-contain p-1.5'
+                      : 'object-cover'
+                  }
+                />
+              ) : (
+                <CoverFallback />
+              )}
             </div>
             <div className="min-w-0">
               <p className="text-[9px] font-medium tracking-[0.2em] uppercase text-white/45 mb-0.5 truncate">

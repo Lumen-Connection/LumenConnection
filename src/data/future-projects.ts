@@ -19,14 +19,6 @@ export type FutureProject = {
  */
 export const futureProjects: FutureProject[] = [
   {
-    id: 1,
-    title: 'Lumen Shop',
-    description:
-      'A loja da Lumen Connection: camisas, acessórios e outros itens estampados com a marca do estúdio.',
-    description_en:
-      'The Lumen Connection store: shirts, accessories and other items printed with the studio’s brand.',
-  },
-  {
     id: 2,
     title: 'Lumen Music Mobile',
     description:
@@ -36,11 +28,10 @@ export const futureProjects: FutureProject[] = [
   },
   {
     id: 3,
-    title: 'Hub da Lumen Connection',
-    title_en: 'Lumen Connection Hub',
+    title: 'Lumen AI Core',
     description:
-      'Um lugar só para baixar os programas nativos e open-source da Lumen: cada um com a sua descrição e o acompanhamento dos releases.',
+      'Em fase de estudo no estúdio. Mais detalhes serão revelados em breve.',
     description_en:
-      'A single place to download Lumen’s native and open-source programs: each one with its own description and release tracking.',
+      'Under study at the studio. More details will be revealed soon.',
   },
 ]

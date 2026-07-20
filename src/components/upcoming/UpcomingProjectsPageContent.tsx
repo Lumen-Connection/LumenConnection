@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { ArrowLeft, LayoutGrid, ShieldCheck } from 'lucide-react'
 import { CornerBrackets, SectionLabel } from '@/components/ui/corner-brackets'
+import { CoverFallback } from '@/components/upcoming/CoverFallback'
 import { homePath } from '@/data/service-links'
 import { tField } from '@/lib/i18n/tField'
 import { futureProjects, type FutureProject } from '@/data/future-projects'
@@ -120,6 +121,7 @@ function ProjectCover({
   sizes: string
   pad?: string
 }) {
+  if (!project.image) return <CoverFallback />
   return (
     <Image
       src={project.image}

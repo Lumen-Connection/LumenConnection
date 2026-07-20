@@ -133,6 +133,19 @@ export const projects: Project[] = [
         desktopOnly: true,
         subcategory: 'Rust',
       },
+      {
+        id: 3,
+        title: 'Lumen Stream',
+        description:
+          'Um só lugar para baixar e converter suas mídias: o Lumen Stream centraliza downloads e conversões de formato, sem depender de vários sites diferentes a cada arquivo',
+        description_en:
+          'One place to download and convert your media: Lumen Stream centralizes downloads and format conversions, with no need to juggle several different sites for every file',
+        url: 'https://github.com/Lumen-Connection/lumen-stream',
+        downloadUrl: '/api/download/lumen-stream',
+        image: '/images/projects/branding/lumen-stream/lumen-stream-final.png',
+        imageFit: 'contain',
+        subcategory: 'Rust',
+      },
     ],
   },
   {

@@ -4,8 +4,11 @@ export type UpcomingProject = {
   title_en?: string
   category: string
   category_en?: string
-  /** Miniatura exibida no widget e capa da listagem em /novosprojetos */
-  image: string
+  /**
+   * Miniatura exibida no widget e capa da listagem em /novosprojetos.
+   * Opcional: projetos ainda sem identidade visual usam um fallback de marca.
+   */
+  image?: string
   /** Enquadramento da capa: 'contain' para logos, 'cover' (padrão) para fotos */
   imageFit?: 'cover' | 'contain'
   /** Resumo exibido em /novosprojetos */
@@ -22,19 +25,6 @@ export type UpcomingProject = {
 
 export const upcomingProjects: UpcomingProject[] = [
   {
-    id: 1,
-    title: 'Lumen Stream',
-    category: 'Desenvolvimento de Software',
-    category_en: 'Software Development',
-    image: '/images/projects/branding/lumen-stream/lumen-stream-final.png',
-    imageFit: 'contain',
-    description:
-      'Um só lugar para baixar e converter suas mídias: o Lumen Stream centraliza downloads e conversões de formato, sem depender de um punhado de sites diferentes a cada arquivo.',
-    description_en:
-      'One place to download and convert your media: Lumen Stream centralizes downloads and format conversions, with no need to juggle a handful of different sites for every file.',
-    launchAt: '2026-07-31T00:00:00-03:00',
-  },
-  {
     id: 2,
     title: 'Lumen Music 2.0',
     category: 'Desenvolvimento de Software',
@@ -47,6 +37,20 @@ export const upcomingProjects: UpcomingProject[] = [
     launchAt: '2026-08-05T00:00:00-03:00',
   },
   {
+    id: 4,
+    title: 'Hub da Lumen Connection',
+    title_en: 'Lumen Connection Hub',
+    category: 'Desenvolvimento de Software',
+    category_en: 'Software Development',
+    image: '/LC - Logos/Lumen Connection Alternative orange logo.png',
+    imageFit: 'contain',
+    description:
+      'Um lugar só para baixar os programas nativos e open-source da Lumen: cada um com a sua descrição e o acompanhamento dos releases.',
+    description_en:
+      'A single place to download Lumen’s native and open-source programs: each one with its own description and release tracking.',
+    launchAt: '2026-08-31T12:00:00-03:00',
+  },
+  {
     id: 3,
     title: 'DemoDisc',
     category: 'Desenvolvimento Web',
@@ -57,5 +61,18 @@ export const upcomingProjects: UpcomingProject[] = [
     description_en:
       'Community-driven retro gaming magazine: readers write the articles, vote on live rankings and argue in the polls, wrapped in the chunky-neon energy of a 1997 newsstand.',
     launchAt: '2026-09-30T00:00:00-03:00',
+  },
+  {
+    id: 5,
+    title: 'Lumen Shop',
+    category: 'Loja',
+    category_en: 'Store',
+    image: '/LC - Logos/Lumen Connection Alternative white logo.png',
+    imageFit: 'contain',
+    description:
+      'A loja da Lumen Connection: camisas, acessórios e outros itens estampados com a marca do estúdio.',
+    description_en:
+      'The Lumen Connection store: shirts, accessories and other items printed with the studio’s brand.',
+    launchAt: '2026-10-05T12:00:00-03:00',
   },
 ]

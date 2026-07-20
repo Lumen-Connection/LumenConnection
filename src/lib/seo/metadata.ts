@@ -29,6 +29,8 @@ export const viewport: Viewport = {
 }
 
 function baseOpenGraph(locale: Locale): NonNullable<Metadata['openGraph']> {
+  // As imagens vêm dos arquivos opengraph-image.tsx por rota (ver src/lib/seo/og.tsx);
+  // por isso não declaramos `images` aqui.
   return {
     type: 'website',
     locale: OG_LOCALE[locale],
@@ -36,14 +38,6 @@ function baseOpenGraph(locale: Locale): NonNullable<Metadata['openGraph']> {
     siteName: SITE.name,
     title: HOME_TITLE[locale],
     description: siteDescription(locale),
-    images: [
-      {
-        url: SITE.ogImage,
-        width: SITE.ogImageWidth,
-        height: SITE.ogImageHeight,
-        alt: SITE.name,
-      },
-    ],
   }
 }
 
@@ -82,10 +76,10 @@ export function buildBaseMetadata(locale: Locale): Metadata {
     },
     openGraph: baseOpenGraph(locale),
     twitter: {
+      // Sem `images`: o X reaproveita a og:image gerada pelos arquivos opengraph-image.tsx.
       card: 'summary_large_image',
       title: HOME_TITLE[locale],
       description: siteDescription(locale),
-      images: [SITE.ogImage],
     },
     robots: {
       index: true,
@@ -131,19 +125,19 @@ export function serviceMetadata(service: ServiceSeo, locale: Locale): Metadata {
       },
     },
     openGraph: {
+      // A imagem vem de servicos/[slug]/opengraph-image.tsx (landscape 1200x630);
+      // a antiga capa retrato deformava o preview.
       type: 'website',
       locale: OG_LOCALE[locale],
       url: path,
       siteName: SITE.name,
       title: `${content.metaTitle} | ${SITE.name}`,
       description: content.metaDescription,
-      images: [{ url: service.cover, alt: content.h1 }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${content.metaTitle} | ${SITE.name}`,
       description: content.metaDescription,
-      images: [service.cover],
     },
   }
 }

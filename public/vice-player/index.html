@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>1986</title>
+    <link rel="stylesheet" href="/vice-player/style.css" />
+  </head>
+  <body
+    class="app-body"
+    data-is-touch="0"
+    data-state-car="0"
+    data-state-car-gun="0"
+    data-state-gun="0"
+    data-state-bike="0"
+    data-state-menu="1"
+    data-state-cutscene="0"
+    data-state-mobring="0"
+    data-state-job="0"
+    data-state-disable-controls="0"
+    data-state-panzer="0"
+    data-state-car-with-weapon="0"
+    data-state-hunter="0"
+    data-state-scope-mode="0"
+    data-state-scope-gun="0"
+  >
+    <div class="rotate-overlay">
+      <span class="rotate-overlay-icon">&#8635;</span>
+      <span>Vire o aparelho</span>
+    </div>
+
+    <div class="wasted-container" hidden></div>
+    <div class="intro-container" hidden>
+      <video class="intro"></video>
+      <div class="loader-container">
+        <div class="progress-bar-container" id="spinner">
+          <div class="progress-bar-fill"></div>
+        </div>
+        <div id="status">Carregando…</div>
+        <div>
+          <progress id="progress"></progress>
+        </div>
+      </div>
+    </div>
+
+    <div class="start-container relative z-20 mx-auto w-full max-w-[1180px] px-4 py-4">
+      <div class="grid items-stretch gap-7 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+        <div
+          class="rounded-[28px] border border-[rgba(159,195,255,0.16)] bg-[rgba(11,22,37,0.78)] p-[34px] text-left shadow-[0_28px_80px_rgba(0,0,0,0.35)] backdrop-blur-[20px] max-md:rounded-[22px] max-md:p-[18px]"
+        >
+          <h1
+            class="mt-[18px] mb-[10px] text-[clamp(2.4rem,5vw,4.7rem)] leading-[0.95] tracking-[-0.04em] text-[#f6fbff] max-sm:text-[2.55rem]"
+          >
+            Vice City
+          </h1>
+          <p class="mb-7 max-w-[38rem] text-left text-[1.05rem] leading-[1.7] text-[#94a7c6]">
+            Importe o <code>game.tar.gz</code> da cópia que você já possui. Ele fica neste
+            navegador (OPFS) e o motor reVC roda aqui, na origem da Lumen. Nada do jogo é
+            hospedado neste site.
+          </p>
+
+          <div
+            id="setup-overlay"
+            class="relative rounded-[22px] border border-[rgba(159,195,255,0.16)] bg-[rgba(9,18,30,0.92)] p-[22px] text-left"
+          >
+            <div id="storage-status" class="storage-status">Checando arquivos locais…</div>
+            <h2 class="mb-[10px] text-[1.15rem] text-[#f8fbff]">Setup</h2>
+            <p class="mb-4 text-left text-[#94a7c6]">
+              A importação acontece uma vez. Depois disso você volta e joga sem mandar o arquivo
+              de novo, até limpar os dados do navegador.
+            </p>
+
+            <div class="setup-actions-panel">
+              <label class="file-picker" for="game-file-input">
+                <span class="file-picker-label">Selecionar game.tar.gz</span>
+                <span id="selected-file-name" class="file-picker-name">Nenhum arquivo</span>
+              </label>
+              <input
+                type="file"
+                id="game-file-input"
+                class="hidden"
+                accept=".tar.gz,.gz,application/gzip"
+              />
+              <button id="reset-game-btn" class="reset-btn hidden" type="button">
+                Reset game data
+              </button>
+            </div>
+
+            <div id="setup-progress" class="mt-[14px] hidden">
+              <div class="setup-progress-head">
+                <span class="setup-progress-title">Importando game.tar.gz</span>
+                <span id="setup-progress-percent" class="setup-progress-percent">0%</span>
+              </div>
+              <p id="setup-progress-label" class="mb-2.5 text-[#94a7c6]">Preparando…</p>
+              <div class="prog-bar-wrap">
+                <div class="prog-bar-fill" id="setup-progress-bar"></div>
+              </div>
+            </div>
+            <div id="setup-error" class="mt-3 hidden text-[0.92rem] text-[#ff7b7b]"></div>
+          </div>
+
+          <div class="config-option cheats-toggle">
+            <label for="enable-cheats">
+              <span>Enable cheats</span>
+              <span class="switch">
+                <input type="checkbox" id="enable-cheats" />
+                <span class="switch-track"></span>
+              </span>
+            </label>
+          </div>
+
+          <div class="click-to-play">
+            <button
+              id="click-to-play-button"
+              class="flex w-full min-h-12 items-center justify-center rounded-[14px] bg-linear-to-br from-[#82aaff] to-[#72e4c7] px-[18px] text-[1rem] font-bold text-[#07111f] transition-transform duration-200 hover:-translate-y-px"
+            >
+              Start to play
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col gap-[22px] rounded-[28px] border border-[rgba(159,195,255,0.16)] bg-[rgba(11,22,37,0.78)] p-[26px] text-left shadow-[0_28px_80px_rgba(0,0,0,0.35)] backdrop-blur-[20px] max-md:rounded-[22px] max-md:p-[18px]"
+        >
+          <div class="disclaimer rounded-[18px] border border-[rgba(159,195,255,0.16)] bg-[rgba(255,255,255,0.025)] p-[18px] text-left leading-[1.7] text-[#94a7c6] max-md:p-[15px]">
+            <span id="disclaimer-text" class="text-[#f7fbff]">AVISO:</span>
+            <span class="eula">
+              <span id="disclaimer-sources">
+                Homenagem de fã. Motor aberto reVC. Sem arquivos originais neste servidor. Sem
+                afiliação com Rockstar Games ou Take-Two Interactive.
+              </span>
+            </span>
+          </div>
+
+          <div
+            class="developed-by rounded-[18px] border border-[rgba(159,195,255,0.16)] bg-[rgba(255,255,255,0.025)] p-[18px] text-left leading-[1.7] text-[#94a7c6] max-md:p-[15px]"
+          >
+            <div>
+              Player local-first:
+              <a class="text-[#f6fbff]" href="https://github.com/joncodeofficial/gta-vice-city-wasm" target="_blank" rel="noreferrer">@joncodeofficial</a>
+              (MIT)
+            </div>
+            <div class="mt-2">
+              Base:
+              <a class="text-[#f6fbff]" href="https://github.com/Lolendor/reVCDOS" target="_blank" rel="noreferrer">reVCDOS</a>
+            </div>
+            <div class="mt-2">
+              <span id="port-by">WASM engine by: </span>
+              <a class="text-[#f6fbff]" href="https://github.com/okhmanyuk-ev" target="_blank" rel="noreferrer">@specialist003</a>,
+              <a class="text-[#f6fbff]" href="https://www.youtube.com/caiiiycuk" target="_blank" rel="noreferrer">@caiiiycuk</a>,
+              <a class="text-[#f6fbff]" href="https://t.me/ser_var" target="_blank" rel="noreferrer">@SerGen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <canvas class="emscripten" id="canvas"></canvas>
+
+    <div class="touch-controls-wrapper">
+      <div id="move"></div>
+      <div id="look"></div>
+      <div class="touch-control radio"></div>
+      <div class="touch-control weapon"></div>
+      <div class="touch-control menu"></div>
+      <div class="touch-control fist"></div>
+      <div class="touch-control drift"></div>
+      <div class="touch-control run"></div>
+      <div class="touch-control car getIn"></div>
+      <div class="touch-control left"></div>
+      <div class="touch-control right"></div>
+      <div class="touch-control jump"></div>
+      <div class="touch-control car getOut"></div>
+      <div class="touch-control camera"></div>
+      <div class="touch-control mobile"></div>
+      <div class="touch-control job"></div>
+      <div class="touch-control horn"></div>
+      <div class="touch-control fireRight"></div>
+      <div class="touch-control fireLeft"></div>
+    </div>
+    <script type="module" src="/vice-player/boot.js"></script>
+  </body>
+</html>

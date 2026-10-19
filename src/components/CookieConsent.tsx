@@ -28,6 +28,7 @@ export function CookieConsent() {
   const [analytics, setAnalytics] = useState(false)
 
   useEffect(() => {
+    if (window.location.pathname === '/vice') return
     const consent = readCookieConsent()
     if (consent) {
       setAnalytics(consent.analytics)

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { ArrowLeft, LayoutGrid, ShieldCheck } from 'lucide-react'
 import { CornerBrackets, SectionLabel } from '@/components/ui/corner-brackets'
+import { HiddenViceTrigger } from '@/components/secret/HiddenViceTrigger'
 import { CoverFallback } from '@/components/upcoming/CoverFallback'
 import { homePath } from '@/data/service-links'
 import { tField } from '@/lib/i18n/tField'
@@ -353,6 +354,10 @@ export function UpcomingProjectsPageContent({ locale }: { locale: Locale }) {
           <LayoutGrid aria-hidden="true" className="w-3.5 h-3.5" />
           {copy.allProjects}
         </a>
+
+        <div className="mt-16 flex justify-end">
+          <HiddenViceTrigger variant="page" />
+        </div>
       </div>
     </article>
   )

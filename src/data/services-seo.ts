@@ -835,6 +835,138 @@ export const SERVICES_SEO: ServiceSeo[] = [
       whatsappMessage: 'Hi! I want visual effects (VFX) for a project with Lumen Connection.',
     },
   },
+  {
+    id: 'ai',
+    link: link('ai'),
+    projectCategories: ['Inteligência Artificial'],
+    cover: '/images/projects/ai/farejador-cover.webp',
+    color: '#a855f7',
+    pt: {
+      metaTitle: 'Inteligência Artificial: Assistentes de IA para Sites e Lojas',
+      metaDescription:
+        'Assistentes de IA sob medida para sites, e-commerces e sistemas: um chat que entende linguagem natural, consulta o seu catálogo e indica o que o seu negócio realmente tem. Orçamento grátis.',
+      keywords: [
+        'inteligência artificial',
+        'assistente de IA',
+        'chatbot com IA',
+        'chatbot para site',
+        'IA para e-commerce',
+        'assistente virtual para site',
+        'integração de IA',
+        'agente de IA',
+      ],
+      h1: 'Inteligência Artificial: assistentes de IA para o seu site',
+      intro: [
+        'Um bom assistente de IA não é um chatbot genérico: ele conhece o seu catálogo, fala a língua do seu cliente e responde com o que o seu negócio realmente oferece. A Lumen Connection desenvolve assistentes de IA sob medida, integrados ao seu site ou sistema.',
+        'O exemplo mais recente é o Farejador IA, do QC Promo: o visitante descreve o que procura — "tênis de corrida até R$150" — e o assistente consulta o catálogo do site para indicar produtos e farejar os menores preços.',
+      ],
+      sections: [
+        {
+          heading: 'Como funciona o Farejador IA',
+          body: [
+            'O Farejador fica num botão flutuante em todas as páginas do QC Promo. Ao abrir, ele se apresenta e oferece atalhos como "Produtos mais baratos", "Indique algo pra mim" e "Tênis em oferta"; a pessoa também pode escrever o pedido do jeito que falaria com um vendedor.',
+            'Por trás, a OpenAI interpreta o pedido e conduz a conversa, enquanto a Algolia busca no catálogo do próprio QC Promo. Em vez de responder de memória, o assistente indica só o que encontrou — cada sugestão leva a uma oferta que existe no site.',
+          ],
+        },
+        {
+          heading: 'IA conectada aos dados do seu negócio',
+          body: [
+            'Construímos o assistente em cima dos seus dados — catálogo, preços, perguntas frequentes, políticas — e definimos o que ele pode e o que não pode responder. A IA ajuda a vender e a tirar dúvidas sem prometer o que a empresa não oferece.',
+          ],
+        },
+        {
+          heading: 'Integrado ao site, não um widget de terceiros',
+          body: [
+            'Como também desenvolvemos sites, o assistente nasce com a identidade visual do seu negócio, roda dentro da sua aplicação e é ajustado conforme o comportamento real de quem conversa com ele.',
+          ],
+        },
+      ],
+      tools: ['OpenAI', 'Algolia', 'Next.js', 'React', 'TypeScript'],
+      faq: [
+        {
+          q: 'O assistente de IA funciona em qualquer site?',
+          a: 'Ele rende mais quando é integrado ao próprio site ou sistema, com acesso aos seus dados. Se o seu site já existe, avaliamos a integração; se ainda não existe, desenvolvemos os dois juntos.',
+        },
+        {
+          q: 'A IA pode responder algo errado?',
+          a: 'Reduzimos esse risco fazendo o assistente consultar os seus dados em vez de responder de memória e limitando os assuntos que ele aborda. Também acompanhamos as conversas para ajustar o comportamento.',
+        },
+        {
+          q: 'Qual modelo de IA vocês usam?',
+          a: 'Depende do projeto: escolhemos o modelo conforme o custo, a velocidade e a qualidade necessários. No Farejador IA usamos a OpenAI para a conversa e a Algolia para a busca no catálogo.',
+        },
+        {
+          q: 'Quanto custa manter um assistente de IA?',
+          a: 'Além do desenvolvimento, existe o custo de uso do modelo, que varia com o volume de conversas. Incluímos uma estimativa no orçamento para você não ter surpresas.',
+        },
+      ],
+      ctaTitle: 'Coloque um assistente de IA no seu site',
+      ctaLabel: 'Pedir orçamento de IA',
+      whatsappMessage: 'Olá! Quero um assistente de IA para o meu site com a Lumen Connection.',
+    },
+    en: {
+      metaTitle: 'Artificial Intelligence: AI Assistants for Websites & Stores',
+      metaDescription:
+        'Custom AI assistants for websites, e-commerce and systems: a chat that understands natural language, queries your catalog and recommends what your business actually offers.',
+      keywords: [
+        'artificial intelligence',
+        'AI assistant',
+        'AI chatbot',
+        'website chatbot',
+        'AI for e-commerce',
+        'AI integration',
+        'AI agent',
+      ],
+      h1: 'Artificial Intelligence: AI assistants for your website',
+      intro: [
+        'A good AI assistant is not a generic chatbot: it knows your catalog, speaks your customer’s language and answers with what your business really offers. Lumen Connection builds custom AI assistants integrated into your website or system.',
+        'Our latest example is QC Promo’s Farejador AI: visitors describe what they want — "running shoes under R$150" — and the assistant queries the site’s catalog to recommend products and sniff out the lowest prices.',
+      ],
+      sections: [
+        {
+          heading: 'How the Farejador AI works',
+          body: [
+            'The Farejador lives in a floating button on every QC Promo page. When opened, it introduces itself and offers shortcuts such as "Cheapest products", "Recommend something for me" and "Sneakers on sale"; people can also type their request the way they would ask a salesperson.',
+            'Under the hood, OpenAI interprets the request and drives the conversation, while Algolia searches QC Promo’s own catalog. Instead of answering from memory, the assistant only recommends what it found — every suggestion leads to a deal that actually exists on the site.',
+          ],
+        },
+        {
+          heading: 'AI connected to your business data',
+          body: [
+            'We build the assistant on top of your data — catalog, prices, FAQs, policies — and define what it can and cannot answer. The AI helps sell and answer questions without promising what the company does not offer.',
+          ],
+        },
+        {
+          heading: 'Built into the site, not a third-party widget',
+          body: [
+            'Because we also build websites, the assistant ships with your brand’s visual identity, runs inside your application and is tuned according to how people actually talk to it.',
+          ],
+        },
+      ],
+      tools: ['OpenAI', 'Algolia', 'Next.js', 'React', 'TypeScript'],
+      faq: [
+        {
+          q: 'Does the AI assistant work on any website?',
+          a: 'It performs best when integrated into your own site or system, with access to your data. If your site already exists, we assess the integration; if not, we build both together.',
+        },
+        {
+          q: 'Can the AI give wrong answers?',
+          a: 'We reduce that risk by having the assistant query your data instead of answering from memory and by limiting the topics it covers. We also review conversations to tune its behavior.',
+        },
+        {
+          q: 'Which AI model do you use?',
+          a: 'It depends on the project: we pick the model based on the cost, speed and quality it needs. For the Farejador AI we use OpenAI for the conversation and Algolia for catalog search.',
+        },
+        {
+          q: 'How much does it cost to run an AI assistant?',
+          a: 'On top of development there is the model usage cost, which varies with conversation volume. We include an estimate in the quote so there are no surprises.',
+        },
+      ],
+      ctaTitle: 'Put an AI assistant on your website',
+      ctaLabel: 'Get an AI quote',
+      whatsappMessage: 'Hi! I want an AI assistant for my website with Lumen Connection.',
+    },
+  },
 ]
 
 export function getServiceBySlug(locale: Locale, slug: string): ServiceSeo | undefined {

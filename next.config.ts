@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async rewrites() {
+    return [
+      { source: '/vice-player', destination: '/vice-player/index.html' },
+      { source: '/vice-player/', destination: '/vice-player/index.html' },
+    ]
+  },
 };
 
 export default nextConfig;

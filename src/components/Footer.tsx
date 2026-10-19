@@ -1,9 +1,10 @@
 'use client'
 
+import { HiddenViceTrigger } from '@/components/secret/HiddenViceTrigger'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { CONTACT, buildMailtoUrl, buildWhatsAppUrl } from '@/lib/contact'
 import { useTranslation } from '@/lib/i18n/LocaleContext'
-import { SERVICE_LINKS, homePath, servicePath } from '@/data/service-links'
+import { SERVICE_LINKS, homePath, modsPath, servicePath } from '@/data/service-links'
 
 const SOCIAL_LINKS = [
   {
@@ -123,12 +124,21 @@ export function Footer() {
         </div>
         <div className="mt-10 sm:mt-12 md:mt-14 pt-6 sm:pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-5">
-            <p className="text-white/90 text-xs tracking-wider">{t('footer.copyright')}</p>
+            <p className="text-white/90 text-xs tracking-wider inline-flex items-center gap-2">
+              {t('footer.copyright')}
+              <HiddenViceTrigger />
+            </p>
             <a
               href={locale === 'en' ? '/en/cookie-policy' : '/politica-de-cookies'}
               className="text-white/60 text-xs tracking-wider underline underline-offset-4 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
             >
               {t('footer.cookiePolicy')}
+            </a>
+            <a
+              href={modsPath(locale)}
+              className="text-white/60 text-xs tracking-wider underline underline-offset-4 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+            >
+              {t('footer.mods')}
             </a>
           </div>
           <a

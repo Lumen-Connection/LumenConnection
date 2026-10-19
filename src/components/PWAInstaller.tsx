@@ -58,6 +58,10 @@ export function PWAInstaller() {
       else window.addEventListener('load', register, { once: true })
     }
 
+    if (window.location.pathname === '/vice' || window.location.pathname.startsWith('/vice-player')) {
+      return
+    }
+
     const onBeforeInstall = (e: Event) => {
       e.preventDefault()
       setDeferredPrompt(e as BeforeInstallPromptEvent)

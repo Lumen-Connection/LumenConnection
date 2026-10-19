@@ -74,6 +74,7 @@ export const translations = {
     'category.webDev': 'Desenvolvimento Web',
     'category.softwareDev': 'Desenvolvimento de Software',
     'category.mobileDev': 'Desenvolvimento Mobile',
+    'category.ai': 'Inteligência Artificial',
     'category.videoEditing': 'Edição de Vídeo e Mídia Social',
     'category.design': 'Design Gráfico, Branding e Identidade Visual',
     'category.posters': 'Posters',
@@ -286,6 +287,7 @@ export const translations = {
       'Métricas anônimas de uso para melhorar o site. Hoje não usamos nenhuma; se um dia usarmos, sua escolha aqui será respeitada.',
     'cookie.save': 'Salvar preferências',
     'footer.cookiePolicy': 'Política de Cookies',
+    'footer.mods': 'Mods de Jogos',
 
     // Language switcher
     'lang.label': 'Idioma',
@@ -417,6 +419,7 @@ export const translations = {
     'category.webDev': 'Web Development',
     'category.softwareDev': 'Native Development',
     'category.mobileDev': 'Mobile Development',
+    'category.ai': 'Artificial Intelligence',
     'category.videoEditing': 'Video Editing & Social Media',
     'category.design': 'Graphic Design, Branding & Visual Identity',
     'category.posters': 'Posters',
@@ -629,6 +632,7 @@ export const translations = {
       'Anonymous usage metrics to improve the site. We use none today; if we ever do, your choice here will be respected.',
     'cookie.save': 'Save preferences',
     'footer.cookiePolicy': 'Cookie Policy',
+    'footer.mods': 'Game Mods',
 
     // Language switcher
     'lang.label': 'Language',

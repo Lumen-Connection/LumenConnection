@@ -78,6 +78,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   )
 
+  const modsPt = `${SITE.url}/mods`
+  const modsEn = `${SITE.url}/en/mods`
+  const modsLanguages = {
+    'pt-BR': modsPt,
+    'en-US': modsEn,
+    'x-default': modsPt,
+  }
+  entries.push(
+    {
+      url: modsPt,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+      alternates: { languages: modsLanguages },
+    },
+    {
+      url: modsEn,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+      alternates: { languages: modsLanguages },
+    },
+  )
+
   const cookiePt = `${SITE.url}/politica-de-cookies`
   const cookieEn = `${SITE.url}/en/cookie-policy`
   const cookieLanguages = {

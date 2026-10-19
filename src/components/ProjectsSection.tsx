@@ -8,6 +8,7 @@ import { CornerBrackets, SectionLabel } from '@/components/ui/corner-brackets'
 import dynamic from 'next/dynamic'
 import { hasMedia, isVideoSource } from '@/lib/media'
 import { LazyVideo } from '@/components/media/LazyVideo'
+import { ModsTeaser } from '@/components/mods/ModsTeaser'
 import { sanitizeUrl } from '@/lib/url'
 
 const DesktopOnlyModal = dynamic(
@@ -568,6 +569,7 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
               </m.div>
             )}
           </AnimatePresence>
+          <ModsTeaser />
         </div>
 
         {mounted && createPortal(

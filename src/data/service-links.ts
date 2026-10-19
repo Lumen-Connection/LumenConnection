@@ -1,6 +1,6 @@
 import type { Locale } from '@/lib/i18n/translations'
 
-export type ServiceId = 'web' | 'software' | 'mobile' | 'video' | 'design' | '3d' | 'vfx'
+export type ServiceId = 'web' | 'software' | 'mobile' | 'ai' | 'video' | 'design' | '3d' | 'vfx'
 
 export type ServiceLink = {
   id: ServiceId
@@ -36,6 +36,13 @@ export const SERVICE_LINKS: ServiceLink[] = [
     slugEn: 'mobile-development',
     labelPt: 'Desenvolvimento Mobile',
     labelEn: 'Mobile Development',
+  },
+  {
+    id: 'ai',
+    slugPt: 'inteligencia-artificial',
+    slugEn: 'artificial-intelligence',
+    labelPt: 'Inteligência Artificial',
+    labelEn: 'Artificial Intelligence',
   },
   {
     id: 'video',
@@ -79,10 +86,15 @@ export function upcomingProjectsPath(locale: Locale): string {
   return locale === 'en' ? '/en/upcoming-projects' : '/novosprojetos'
 }
 
+export function modsPath(locale: Locale): string {
+  return locale === 'en' ? '/en/mods' : '/mods'
+}
+
 /** Pares PT/EN de páginas avulsas (fora de /servicos). */
 const PAGE_PAIRS: { pt: string; en: string }[] = [
   { pt: '/politica-de-cookies', en: '/en/cookie-policy' },
   { pt: '/novosprojetos', en: '/en/upcoming-projects' },
+  { pt: '/mods', en: '/en/mods' },
 ]
 
 /**

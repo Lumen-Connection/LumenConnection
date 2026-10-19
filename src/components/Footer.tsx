@@ -4,7 +4,7 @@ import { HiddenViceTrigger } from '@/components/secret/HiddenViceTrigger'
 import { CornerBrackets } from '@/components/ui/corner-brackets'
 import { CONTACT, buildMailtoUrl, buildWhatsAppUrl } from '@/lib/contact'
 import { useTranslation } from '@/lib/i18n/LocaleContext'
-import { SERVICE_LINKS, homePath, servicePath } from '@/data/service-links'
+import { SERVICE_LINKS, homePath, modsPath, servicePath } from '@/data/service-links'
 
 const SOCIAL_LINKS = [
   {
@@ -133,6 +133,12 @@ export function Footer() {
               className="text-white/60 text-xs tracking-wider underline underline-offset-4 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
             >
               {t('footer.cookiePolicy')}
+            </a>
+            <a
+              href={modsPath(locale)}
+              className="text-white/60 text-xs tracking-wider underline underline-offset-4 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+            >
+              {t('footer.mods')}
             </a>
           </div>
           <a

@@ -1,4 +1,5 @@
 import {
+  BrainCircuit,
   Code2,
   Smartphone,
   Heart,
@@ -83,6 +84,17 @@ export const projects: Project[] = [
       },
       {
         id: 3,
+        title: 'QC Promo',
+        description:
+          'Site de curadoria de ofertas desenvolvido em Next.js, com achados escolhidos a dedo na Amazon, Mercado Livre, Shopee e Cobasi, vitrines por loja e categoria, filtros por perfil de compra e o assistente Farejador IA',
+        description_en:
+          'Deal-curation site built in Next.js, with hand-picked finds from Amazon, Mercado Livre, Shopee and Cobasi, store and category showcases, shopper-profile filters and the Farejador AI assistant',
+        image: '/images/projects/web/qcpromo.webp',
+        url: 'https://qcpromo.com.br/',
+        subcategory: 'Next.js',
+      },
+      {
+        id: 4,
         title: COMING_SOON_PT,
         title_en: COMING_SOON_EN,
         description: COMING_SOON_PT,
@@ -145,6 +157,39 @@ export const projects: Project[] = [
         image: '/images/projects/branding/lumen-stream/lumen-stream-final.png',
         imageFit: 'contain',
         subcategory: 'Rust',
+      },
+    ],
+  },
+  {
+    id: 10,
+    title: 'Inteligência Artificial',
+    title_en: 'Artificial Intelligence',
+    category: 'Inteligência Artificial',
+    category_en: 'Artificial Intelligence',
+    description:
+      'Assistentes de IA integrados a sites e sistemas, que conversam com o usuário e consultam os dados do próprio negócio',
+    description_en:
+      'AI assistants built into websites and systems, chatting with users and querying the business’s own data',
+    stats: STATS_PT,
+    stats_en: STATS_EN,
+    color: '#a855f7',
+    gradient: 'from-purple-500/40 to-transparent',
+    icon: BrainCircuit,
+    image: '/images/projects/ai/farejador-cover.webp',
+    bannerImage: '/images/projects/ai/farejador-cover.webp',
+    showInHero: false,
+    items: [
+      {
+        id: 1,
+        title: 'Farejador IA — QC Promo',
+        description:
+          'Assistente de compras com IA dentro do QC Promo: a pessoa descreve o que procura em linguagem natural ("tênis de corrida até R$150") e o Farejador, com OpenAI e Algolia, consulta o catálogo do site para indicar produtos e encontrar os preços mais baixos',
+        description_en:
+          'AI shopping assistant inside QC Promo: shoppers describe what they want in plain language ("running shoes under R$150") and the Farejador, powered by OpenAI and Algolia, queries the site’s catalog to recommend products and sniff out the lowest prices',
+        image: '/images/projects/ai/farejador-cover.webp',
+        url: 'https://qcpromo.com.br/',
+        subcategory: 'Assistente de compras',
+        subcategory_en: 'Shopping assistant',
       },
     ],
   },

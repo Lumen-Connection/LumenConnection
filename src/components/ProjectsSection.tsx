@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, useCallback, memo } from 'react'
 import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import { m, AnimatePresence, useScroll, useTransform, useMotionTemplate } from 'framer-motion'
-import { ArrowRight, ArrowLeft, ExternalLink, Download, Code2, Images, ZoomIn, History } from 'lucide-react'
+import { ArrowRight, ArrowLeft, ExternalLink, Download, Code2, Images, ZoomIn, History, Play } from 'lucide-react'
 import { categories, categoryTranslationKey, sectionProjects as projects, ProjectItem } from '@/app/portfolioData'
 import { CornerBrackets, SectionLabel } from '@/components/ui/corner-brackets'
 import dynamic from 'next/dynamic'
@@ -23,6 +23,10 @@ const TimelineModal = dynamic(
   () => import('@/components/TimelineModal').then((mod) => mod.TimelineModal),
   { ssr: false },
 )
+const VideoModal = dynamic(
+  () => import('@/components/VideoModal').then((mod) => mod.VideoModal),
+  { ssr: false },
+)
 import { useTranslation } from '@/lib/i18n/LocaleContext'
 import { tField } from '@/lib/i18n/tField'
 import type { TranslationKey } from '@/lib/i18n/translations'
@@ -35,6 +39,66 @@ function isMobileDevice(): boolean {
 }
 
 const DEFAULT_BANNER = '/videos/banners/video-banner.webm'
+
+/**
+ * Na aba "Todos" de um serviço, uma subcategoria com muitos itens (ex.: os
+ * Shorts do Next Station) mostra só os primeiros e um card "ver todos" que
+ * abre o filtro dela, para não lotar a grade.
+ */
+const ALL_VIEW_GROUP_LIMIT = 2
+
+type GridEntry =
+  | { kind: 'item'; item: ProjectItem }
+  | { kind: 'more'; subcategory: string; hidden: number; total: number; preview: string }
+
+const MoreItemsCard = memo(function MoreItemsCard({ label, hidden, total, preview, color, index, onClick }: {
+  label: string
+  hidden: number
+  total: number
+  preview: string
+  color: string
+  index: number
+  onClick: () => void
+}) {
+  const { t } = useTranslation()
+  return (
+    <m.button
+      type="button"
+      onClick={onClick}
+      className="relative overflow-hidden group h-[240px] sm:h-[260px] md:h-[280px] w-full border border-dashed border-white/20 hover:border-white/40 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      aria-label={`${t('projects.seeAll')} · ${label} (${total})`}
+    >
+      {hasMedia(preview) && !isVideoSource(preview) && (
+        <Image
+          src={preview}
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover opacity-25 blur-[2px] transition-all duration-500 group-hover:opacity-35 group-hover:scale-105"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40" />
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-5">
+        <span className="text-5xl sm:text-6xl font-bold leading-none tracking-tight" style={{ color }}>
+          +{hidden}
+        </span>
+        <span className="mt-2 text-[10px] font-medium tracking-[0.25em] uppercase text-white/70">
+          {t('projects.moreIn')} {label}
+        </span>
+        <span className="relative mt-5 inline-flex items-center gap-1.5 px-3 py-1.5 border border-white/20 text-white text-[10px] font-semibold tracking-[0.18em] uppercase group-hover:bg-white group-hover:text-black transition-colors">
+          <CornerBrackets />
+          {t('projects.seeAll')} · {total}
+          <ArrowRight aria-hidden="true" className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+        </span>
+      </div>
+    </m.button>
+  )
+})
 
 const ProjectCard = memo(function ProjectCard({ project, index, onSaibaMais }: {
   project: typeof projects[0]
@@ -116,13 +180,16 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
   const [showDesktopWarn, setShowDesktopWarn] = useState(false)
   const [showGallery, setShowGallery] = useState(false)
   const [showTimeline, setShowTimeline] = useState(false)
+  const [showVideo, setShowVideo] = useState(false)
 
   const hasGallery = !!(item.gallery && item.gallery.length > 0)
   const hasTimeline = !!(item.timeline && item.timeline.length > 0)
-  const interactive = hasGallery || hasTimeline
+  const hasVideo = hasMedia(item.videoUrl)
+  const interactive = hasGallery || hasTimeline || hasVideo
 
   const openOverlay = () => {
-    if (hasTimeline) setShowTimeline(true)
+    if (hasVideo) setShowVideo(true)
+    else if (hasTimeline) setShowTimeline(true)
     else if (hasGallery) setShowGallery(true)
   }
 
@@ -162,7 +229,9 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
       tabIndex={interactive ? 0 : undefined}
       aria-haspopup={interactive ? 'dialog' : undefined}
       aria-label={
-        hasTimeline
+        hasVideo
+          ? `${t('item.watchAria')} ${itemTitle}`
+          : hasTimeline
           ? `${t('item.openTimelineAria')} ${itemTitle}`
           : hasGallery
             ? `${t('item.openGalleryAria')} ${itemTitle}`
@@ -221,6 +290,17 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
               </a>
             )}
           </div>
+        ) : hasVideo ? (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); setShowVideo(true) }}
+            className="relative inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 max-w-full bg-orange-500 hover:bg-orange-400 text-black text-[9px] sm:text-[10px] font-semibold tracking-[0.12em] sm:tracking-[0.18em] uppercase whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+            aria-haspopup="dialog"
+            aria-label={`${t('item.watchAria')} ${itemTitle}`}
+          >
+            <Play aria-hidden="true" className="w-3.5 h-3.5 shrink-0 fill-current" />
+            {t('item.watch')}
+          </button>
         ) : item.url ? (
           <a
             href={sanitizeUrl(item.url)}
@@ -289,6 +369,15 @@ const ItemCard = memo(function ItemCard({ item, index }: { item: ProjectItem; in
         onClose={() => setShowTimeline(false)}
       />
     )}
+    {showVideo && hasVideo && (
+      <VideoModal
+        src={item.videoUrl!}
+        poster={item.poster}
+        title={itemTitle}
+        description={itemDescription}
+        onClose={() => setShowVideo(false)}
+      />
+    )}
     </>
   )
 })
@@ -328,15 +417,40 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
     return item?.subcategory_en ?? sub
   }
   const subcategories = activeProject
-    ? ['Todos', ...Array.from(new Set(activeProject.items.filter((i) => i.subcategory).map((i) => i.subcategory as string)))]
+    ? ['Todos', ...Array.from(new Set(activeProject.items.flatMap((i) => [
+        ...(i.subcategory ? [i.subcategory] : []),
+        ...(i.tags ?? []),
+      ])))]
     : []
   const hasSubcategories = subcategories.length > 1
 
   const visibleItems = activeProject
     ? activeSubcategory === 'Todos'
       ? activeProject.items
-      : activeProject.items.filter((i) => i.subcategory === activeSubcategory)
+      : activeProject.items.filter((i) => i.subcategory === activeSubcategory || i.tags?.includes(activeSubcategory))
     : []
+
+  const groupSizes = new Map<string, number>()
+  for (const item of visibleItems) {
+    if (item.subcategory) groupSizes.set(item.subcategory, (groupSizes.get(item.subcategory) ?? 0) + 1)
+  }
+  const shownPerGroup = new Map<string, number>()
+  const gridEntries: GridEntry[] = []
+  for (const item of visibleItems) {
+    const sub = item.subcategory
+    const total = sub ? groupSizes.get(sub) ?? 0 : 0
+    // Só agrupa quando o card "ver todos" esconde ao menos 2 itens
+    if (activeSubcategory !== 'Todos' || !sub || total <= ALL_VIEW_GROUP_LIMIT + 1) {
+      gridEntries.push({ kind: 'item', item })
+      continue
+    }
+    const shown = (shownPerGroup.get(sub) ?? 0) + 1
+    shownPerGroup.set(sub, shown)
+    if (shown <= ALL_VIEW_GROUP_LIMIT) gridEntries.push({ kind: 'item', item })
+    else if (shown === ALL_VIEW_GROUP_LIMIT + 1) {
+      gridEntries.push({ kind: 'more', subcategory: sub, hidden: total - ALL_VIEW_GROUP_LIMIT, total, preview: item.image })
+    }
+  }
 
   const bannerIsVideo = DEFAULT_BANNER.endsWith('.webm') || DEFAULT_BANNER.endsWith('.mp4')
 
@@ -542,9 +656,27 @@ export function ProjectsSection({ pendingCategory, viewAllTrigger }: { pendingCa
                     transition={{ duration: 0.25 }}
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto"
                   >
-                    {visibleItems.map((item, index) => (
-                      <ItemCard key={item.id} item={item} index={index} />
-                    ))}
+                    {gridEntries.map((entry, index) =>
+                      entry.kind === 'item' ? (
+                        <ItemCard key={entry.item.id} item={entry.item} index={index} />
+                      ) : (
+                        <MoreItemsCard
+                          key={`more-${entry.subcategory}`}
+                          label={subcategoryLabel(entry.subcategory)}
+                          hidden={entry.hidden}
+                          total={entry.total}
+                          preview={entry.preview}
+                          color={activeProject.color}
+                          index={index}
+                          onClick={() => {
+                            setActiveSubcategory(entry.subcategory)
+                            requestAnimationFrame(() => {
+                              document.getElementById('projects-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                            })
+                          }}
+                        />
+                      ),
+                    )}
                   </m.div>
                 </AnimatePresence>
               </m.div>

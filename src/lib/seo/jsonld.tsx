@@ -7,6 +7,7 @@ import { getServiceContent, type ServiceSeo } from '@/data/services-seo'
 const SOCIAL_PROFILES = [
   'https://www.instagram.com/lumenconnection',
   'https://x.com/LumenConnection',
+  'https://www.youtube.com/@LumenConnection2026',
 ]
 
 export function professionalServiceLd() {

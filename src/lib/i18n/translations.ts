@@ -30,9 +30,9 @@ export const translations = {
     // Hero
     'hero.ctaPrimaryDefault': 'Inicie um Projeto',
     'hero.ctaSecondary': 'Veja Nossos Trabalhos',
-    'hero.stats.projectsValue': '+15',
+    'hero.stats.projectsValue': '+30',
     'hero.stats.projectsLabel': 'Projetos\nEntregues',
-    'hero.stats.techValue': '+20',
+    'hero.stats.techValue': '+30',
     'hero.stats.techLabel': 'Tecnologias\nDominadas',
     'hero.stats.dedicationValue': '100%',
     'hero.stats.dedicationLabel': 'Dedicação\nEm Cada Entrega',
@@ -101,6 +101,14 @@ export const translations = {
     'item.enlargeAria': 'Ampliar imagem de',
     'item.demoVisual': 'Demonstração visual de',
     'item.statsProjectsCompleted': 'Projetos concluídos',
+    'item.watch': 'Assistir',
+    'item.watchAria': 'Assistir ao vídeo de',
+    'projects.moreIn': 'mais em',
+    'projects.seeAll': 'Ver todos',
+    'video.close': 'Fechar vídeo',
+    'banner2.eyebrow': 'Nossa assinatura',
+    'banner2.caption': 'Modelada e animada em Blender pela nossa equipe',
+    'banner2.watch': 'Assistir com som',
 
     // About section
     'about.label': 'Sobre Nós',
@@ -246,7 +254,7 @@ export const translations = {
     'contact.whatsappAria': 'Falar com Lumen Connection no WhatsApp, número +55',
     'team.role.matheus': 'Desenvolvedor de Software | DevOps | Editor de Vídeo',
     'team.role.gabriel': 'Editor de Vídeo | Designer Gráfico | Artista 3D',
-    'team.role.luiz': 'Desenvolvedor de Software',
+    'team.role.luiz': 'Desenvolvedor de Software | Editor de Vídeo | Artista 3D | Designer',
 
     // Footer
     'footer.tagline':
@@ -256,6 +264,7 @@ export const translations = {
     'footer.whatsappAria': 'Falar no WhatsApp pelo número',
     'footer.instagramAria': 'Seguir a Lumen Connection no Instagram',
     'footer.twitterAria': 'Seguir a Lumen Connection no X (Twitter)',
+    'footer.youtubeAria': 'Inscrever-se no canal da Lumen Connection no YouTube',
     'footer.services': 'Serviços',
     'footer.copyright': '🄯 2026 Lumen Connection',
 
@@ -375,9 +384,9 @@ export const translations = {
     // Hero
     'hero.ctaPrimaryDefault': 'Start a Project',
     'hero.ctaSecondary': 'See Our Work',
-    'hero.stats.projectsValue': '+15',
+    'hero.stats.projectsValue': '+30',
     'hero.stats.projectsLabel': 'Projects\nDelivered',
-    'hero.stats.techValue': '+20',
+    'hero.stats.techValue': '+30',
     'hero.stats.techLabel': 'Technologies\nMastered',
     'hero.stats.dedicationValue': '100%',
     'hero.stats.dedicationLabel': 'Dedication\nIn Every Delivery',
@@ -446,6 +455,14 @@ export const translations = {
     'item.enlargeAria': 'Enlarge image of',
     'item.demoVisual': 'Visual demo of',
     'item.statsProjectsCompleted': 'Projects completed',
+    'item.watch': 'Watch',
+    'item.watchAria': 'Watch the video of',
+    'projects.moreIn': 'more in',
+    'projects.seeAll': 'See all',
+    'video.close': 'Close video',
+    'banner2.eyebrow': 'Our signature',
+    'banner2.caption': 'Modeled and animated in Blender by our team',
+    'banner2.watch': 'Watch with sound',
 
     // About section
     'about.label': 'About Us',
@@ -591,7 +608,7 @@ export const translations = {
     'contact.whatsappAria': 'Message Lumen Connection on WhatsApp, number +55',
     'team.role.matheus': 'Software Developer | DevOps | Video Editor',
     'team.role.gabriel': 'Video Editor | Graphic Designer | 3D Artist',
-    'team.role.luiz': 'Software Developer',
+    'team.role.luiz': 'Software Developer | Video Editor | 3D Artist | Designer',
 
     // Footer
     'footer.tagline':
@@ -601,6 +618,7 @@ export const translations = {
     'footer.whatsappAria': 'Message on WhatsApp at',
     'footer.instagramAria': 'Follow Lumen Connection on Instagram',
     'footer.twitterAria': 'Follow Lumen Connection on X (Twitter)',
+    'footer.youtubeAria': 'Subscribe to Lumen Connection on YouTube',
     'footer.services': 'Services',
     'footer.copyright': '🄯 2026 Lumen Connection',
 

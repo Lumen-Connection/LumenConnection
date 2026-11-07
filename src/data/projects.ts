@@ -16,6 +16,21 @@ const STATS_EN = 'Projects completed'
 const COMING_SOON_PT = 'Em breve'
 const COMING_SOON_EN = 'Coming soon'
 
+/** Ferramentas usadas nos vídeos do Farejador IA e do Next Station. */
+const CRAFT_TOOLS = ['FilmCraft', 'EffectCraft']
+
+/** Shorts do canal Next Station Games, do mais recente ao mais antigo. */
+const NEXT_STATION_SHORTS = [
+  { youtubeId: '13SIX5O3dTY', slug: 'ps5-switch-2-desbloqueados', title: 'PS5 e Switch 2 desbloqueados!', title_en: 'PS5 and Switch 2 unlocked!' },
+  { youtubeId: 'W2Q0X6PCu9s', slug: 'spider-man-3', title: "Marvel's Spider-Man 3 vai surpreender?", title_en: "Will Marvel's Spider-Man 3 surprise us?" },
+  { youtubeId: 'J6v81uB37po', slug: 'zelda-1998-vs-2026', title: 'Comparação Zelda 1998 vs 2026', title_en: 'Zelda 1998 vs 2026 comparison' },
+  { youtubeId: '7RaekibWjAo', slug: 'zelda-ocarina-remake', title: 'O remake mudou tudo em Zelda: Ocarina of Time', title_en: 'The remake changed everything in Zelda: Ocarina of Time' },
+  { youtubeId: 'zVwHgfTXoVs', slug: 'phantom-blade-zero', title: 'Phantom Blade Zero superou Nioh 3 e Onimusha?', title_en: 'Did Phantom Blade Zero beat Nioh 3 and Onimusha?' },
+  { youtubeId: 'LPCWDOQsUUI', slug: 'mapa-gta-6', title: 'A imensidão do mapa de GTA 6', title_en: 'The sheer size of the GTA 6 map' },
+  { youtubeId: 'sXRxXLnycAY', slug: 'gta-6-210gb', title: 'GTA 6 com 210 GB!', title_en: 'GTA 6 at 210 GB!' },
+  { youtubeId: 'q2inT6Z8S1s', slug: 'dualsense-prism', title: 'Novos DualSense Prism anunciados pela PlayStation', title_en: 'New DualSense Prism controllers announced by PlayStation' },
+]
+
 export const projects: Project[] = [
   {
     id: 9,
@@ -226,9 +241,9 @@ export const projects: Project[] = [
     category: 'Edição de Vídeo e Mídia Social',
     category_en: 'Video Editing & Social Media',
     description:
-      'Edição profissional de vídeos com Adobe Premiere Pro, After Effects e Blender — incluindo conteúdo para YouTube, reels, stories e outras mídias sociais',
+      'Edição profissional de vídeos com Adobe Premiere Pro, After Effects, FilmCraft, EffectCraft e Blender — incluindo conteúdo para YouTube, Shorts, reels, stories e outras mídias sociais',
     description_en:
-      'Professional video editing with Adobe Premiere Pro, After Effects and Blender — including YouTube content, Reels, stories and other social formats',
+      'Professional video editing with Adobe Premiere Pro, After Effects, FilmCraft, EffectCraft and Blender — including YouTube content, Shorts, Reels, stories and other social formats',
     stats: STATS_PT,
     stats_en: STATS_EN,
     color: '#3b82f6',
@@ -260,6 +275,33 @@ export const projects: Project[] = [
         url: 'https://www.instagram.com/reel/DXnNKkkEY_6/?igsh=cm5xMTlkdjdrcnZ4',
         subcategory: 'Adobe After Effects',
       },
+      {
+        id: 3,
+        title: 'Farejador IA — Vídeo promocional',
+        title_en: 'Farejador AI — Promo video',
+        description:
+          'Vídeo vertical de lançamento do Farejador IA, o assistente de compras do QC Promo, produzido com FilmCraft e EffectCraft',
+        description_en:
+          'Vertical launch video for Farejador AI, the QC Promo shopping assistant, produced with FilmCraft and EffectCraft',
+        image: '/images/projects/video-editing/farejador-ia.webp',
+        poster: '/videos/posters/farejador-ia.webp',
+        videoUrl: '/videos/projects/farejador-ia.webm',
+        subcategory: 'FilmCraft',
+        tags: CRAFT_TOOLS,
+      },
+      ...NEXT_STATION_SHORTS.map((short, i) => ({
+        id: 4 + i,
+        title: short.title,
+        title_en: short.title_en,
+        description:
+          'Short de notícias de games para o canal Next Station Games, produzido com FilmCraft e EffectCraft',
+        description_en:
+          'Gaming news Short for the Next Station Games channel, produced with FilmCraft and EffectCraft',
+        image: `/images/projects/video-editing/next-station/${short.slug}.webp`,
+        url: `https://www.youtube.com/shorts/${short.youtubeId}`,
+        subcategory: 'Next Station',
+        tags: CRAFT_TOOLS,
+      })),
     ],
   },
   {
@@ -493,15 +535,33 @@ export const projects: Project[] = [
         description: 'Modelagem, animação e renderização 3D desenvolvido em Blender',
         description_en: '3D modeling, animation and rendering built in Blender',
         image: '/videos/banners/ferrari-comercial-trailer.webm',
+        poster: '/videos/posters/ferrari-comercial-trailer.webp',
         subcategory: 'Blender',
       },
       {
         id: 2,
-        title: 'Em Breve',
-        title_en: 'Coming Soon',
-        description: COMING_SOON_PT,
-        description_en: COMING_SOON_EN,
-        image: '/',
+        title: 'Intro Lumen Connection',
+        description:
+          'Vinheta oficial da Lumen Connection: feixes de luz atravessam a névoa até revelar a marca. Modelagem, iluminação volumétrica e animação em Blender',
+        description_en:
+          'The official Lumen Connection ident: beams of light cut through the fog to reveal the brand. Modeling, volumetric lighting and animation in Blender',
+        image: '/videos/projects/lumen-intro-alt2.webm',
+        poster: '/videos/posters/lumen-intro-alt2.webp',
+        videoUrl: '/videos/projects/lumen-intro-alt2.webm',
+        subcategory: 'Blender',
+      },
+      {
+        id: 3,
+        title: 'Intro Lumen Connection — Versão espacial',
+        title_en: 'Lumen Connection Intro — Space version',
+        description:
+          'Versão alternativa da vinheta: o losango da marca surge refletido em um cenário espacial antes do logotipo. Modelagem, animação e renderização em Blender',
+        description_en:
+          'Alternate version of the ident: the brand diamond rises, mirrored, in a space scene before the wordmark. Modeling, animation and rendering in Blender',
+        image: '/videos/projects/lumen-intro.webm',
+        poster: '/videos/posters/lumen-intro.webp',
+        videoUrl: '/videos/projects/lumen-intro.webm',
+        subcategory: 'Blender',
       },
     ],
   },

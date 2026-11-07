@@ -34,6 +34,13 @@ export type ProjectItem = {
   timeline?: TimelineStep[]
   subcategory?: string
   subcategory_en?: string
+  /**
+   * Filtros extras além da subcategoria principal (ex.: ferramentas usadas).
+   * O item aparece no filtro da subcategoria e no de cada tag.
+   */
+  tags?: string[]
+  /** Vídeo com som aberto em modal pelo botão "Assistir" (a capa do card toca sem som). */
+  videoUrl?: string
 }
 
 export type HeroSlideExtra = {
